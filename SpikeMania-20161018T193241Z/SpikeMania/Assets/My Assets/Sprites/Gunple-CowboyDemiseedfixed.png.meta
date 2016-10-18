@@ -1,0 +1,1674 @@
+fileFormatVersion: 2
+guid: 59d3fd90ac9269e41ab1b4b73758a34a
+timeCreated: 1476230308
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Gunple-CowboyDemiseedfixed_0
+    21300002: Gunple-CowboyDemiseedfixed_1
+    21300004: Gunple-CowboyDemiseedfixed_2
+    21300006: Gunple-CowboyDemiseedfixed_3
+    21300008: Gunple-CowboyDemiseedfixed_4
+    21300010: Gunple-CowboyDemiseedfixed_5
+    21300012: Gunple-CowboyDemiseedfixed_6
+    21300014: Gunple-CowboyDemiseedfixed_7
+    21300016: Gunple-CowboyDemiseedfixed_8
+    21300018: Gunple-CowboyDemiseedfixed_9
+    21300020: Gunple-CowboyDemiseedfixed_10
+    21300022: Gunple-CowboyDemiseedfixed_11
+    21300024: Gunple-CowboyDemiseedfixed_12
+    21300026: Gunple-CowboyDemiseedfixed_13
+    21300028: Gunple-CowboyDemiseedfixed_14
+    21300030: Gunple-CowboyDemiseedfixed_15
+    21300032: Gunple-CowboyDemiseedfixed_16
+    21300034: Gunple-CowboyDemiseedfixed_17
+    21300036: Gunple-CowboyDemiseedfixed_18
+    21300038: Gunple-CowboyDemiseedfixed_19
+    21300040: Gunple-CowboyDemiseedfixed_20
+    21300042: Gunple-CowboyDemiseedfixed_21
+    21300044: Gunple-CowboyDemiseedfixed_22
+    21300046: Gunple-CowboyDemiseedfixed_23
+    21300048: Gunple-CowboyDemiseedfixed_24
+    21300050: Gunple-CowboyDemiseedfixed_25
+    21300052: Gunple-CowboyDemiseedfixed_26
+    21300054: Gunple-CowboyDemiseedfixed_27
+    21300056: Gunple-CowboyDemiseedfixed_28
+    21300058: Gunple-CowboyDemiseedfixed_29
+    21300060: Gunple-CowboyDemiseedfixed_30
+    21300062: Gunple-CowboyDemiseedfixed_31
+    21300064: Gunple-CowboyDemiseedfixed_32
+    21300066: Gunple-CowboyDemiseedfixed_33
+    21300068: Gunple-CowboyDemiseedfixed_34
+    21300070: Gunple-CowboyDemiseedfixed_35
+    21300072: Gunple-CowboyDemiseedfixed_36
+    21300074: Gunple-CowboyDemiseedfixed_37
+    21300076: Gunple-CowboyDemiseedfixed_38
+    21300078: Gunple-CowboyDemiseedfixed_39
+    21300080: Gunple-CowboyDemiseedfixed_40
+    21300082: Gunple-CowboyDemiseedfixed_41
+    21300084: Gunple-CowboyDemiseedfixed_42
+    21300086: Gunple-CowboyDemiseedfixed_43
+    21300088: Gunple-CowboyDemiseedfixed_44
+    21300090: Gunple-CowboyDemiseedfixed_45
+    21300092: Gunple-CowboyDemiseedfixed_46
+    21300094: Gunple-CowboyDemiseedfixed_47
+    21300096: Gunple-CowboyDemiseedfixed_48
+    21300098: Gunple-CowboyDemiseedfixed_49
+    21300100: Gunple-CowboyDemiseedfixed_50
+    21300102: Gunple-CowboyDemiseedfixed_51
+    21300104: Gunple-CowboyDemiseedfixed_52
+    21300106: Gunple-CowboyDemiseedfixed_53
+    21300108: Gunple-CowboyDemiseedfixed_54
+    21300110: Gunple-CowboyDemiseedfixed_55
+    21300112: Gunple-CowboyDemiseedfixed_56
+    21300114: Gunple-CowboyDemiseedfixed_57
+    21300116: Gunple-CowboyDemiseedfixed_58
+    21300118: Gunple-CowboyDemiseedfixed_59
+    21300120: Gunple-CowboyDemiseedfixed_60
+    21300122: Gunple-CowboyDemiseedfixed_61
+    21300124: Gunple-CowboyDemiseedfixed_62
+    21300126: Gunple-CowboyDemiseedfixed_63
+    21300128: Gunple-CowboyDemiseedfixed_64
+    21300130: Gunple-CowboyDemiseedfixed_65
+    21300132: Gunple-CowboyDemiseedfixed_66
+    21300134: Gunple-CowboyDemiseedfixed_67
+    21300136: Gunple-CowboyDemiseedfixed_68
+    21300138: Gunple-CowboyDemiseedfixed_69
+    21300140: Gunple-CowboyDemiseedfixed_70
+    21300142: Gunple-CowboyDemiseedfixed_71
+    21300144: Gunple-CowboyDemiseedfixed_72
+    21300146: Gunple-CowboyDemiseedfixed_73
+    21300148: Gunple-CowboyDemiseedfixed_74
+    21300150: Gunple-CowboyDemiseedfixed_75
+    21300152: Gunple-CowboyDemiseedfixed_76
+    21300154: Gunple-CowboyDemiseedfixed_77
+    21300156: Gunple-CowboyDemiseedfixed_78
+    21300158: Gunple-CowboyDemiseedfixed_79
+    21300160: Gunple-CowboyDemiseedfixed_80
+    21300162: Gunple-CowboyDemiseedfixed_81
+    21300164: Gunple-CowboyDemiseedfixed_82
+    21300166: Gunple-CowboyDemiseedfixed_83
+    21300168: Gunple-CowboyDemiseedfixed_84
+    21300170: Gunple-CowboyDemiseedfixed_85
+    21300172: lwalk1
+    21300174: lwalk2
+    21300176: lwalk3
+    21300178: Gunple-CowboyDemiseedfixed_89
+    21300180: Gunple-CowboyDemiseedfixed_90
+    21300182: Gunple-CowboyDemiseedfixed_91
+    21300184: Gunple-CowboyDemiseedfixed_92
+    21300186: gunwalkl1
+    21300188: gunwalkl2
+    21300190: gunwalkl3
+    21300192: Gunple-CowboyDemiseedfixed_96
+    21300194: Gunple-CowboyDemiseedfixed_97
+    21300196: Gunple-CowboyDemiseedfixed_98
+    21300198: Gunple-CowboyDemiseedfixed_99
+    21300200: Gunple-CowboyDemiseedfixed_100
+    21300202: Gunple-CowboyDemiseedfixed_101
+    21300204: Gunple-CowboyDemiseedfixed_102
+    21300206: Gunple-CowboyDemiseedfixed_103
+    21300208: Gunple-CowboyDemiseedfixed_104
+    21300210: Gunple-CowboyDemiseedfixed_105
+    21300212: Gunple-CowboyDemiseedfixed_106
+    21300214: Gunple-CowboyDemiseedfixed_107
+    21300216: Gunple-CowboyDemiseedfixed_108
+    21300218: Gunple-CowboyDemiseedfixed_109
+    21300220: Gunple-CowboyDemiseedfixed_110
+    21300222: Gunple-CowboyDemiseedfixed_111
+    21300224: Gunple-CowboyDemiseedfixed_112
+    21300226: Gunple-CowboyDemiseedfixed_113
+    21300228: Gunple-CowboyDemiseedfixed_114
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 1024
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 319
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 319
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 319
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_3
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 319
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_4
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 319
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_5
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 319
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_6
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 319
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_7
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 319
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_8
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 319
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_9
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 319
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_10
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 319
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_11
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 319
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_12
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 319
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_13
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 280
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_14
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 280
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_15
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 280
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_16
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 280
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_17
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 280
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_18
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 280
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_19
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 280
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_20
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 280
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_21
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 280
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_22
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 280
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_23
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 280
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_24
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 280
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_25
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 229
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_26
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 229
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_27
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 229
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_28
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 229
+        width: 70
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 229
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_30
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 229
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_31
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 229
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_32
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 229
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_33
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 229
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_34
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 229
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_35
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 189
+        width: 60
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_36
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 189
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_37
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 189
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_38
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 189
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_39
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 189
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_40
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 189
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_41
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 189
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_42
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 189
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_43
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 189
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_44
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 189
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_45
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 189
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_46
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 189
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_47
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 189
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_48
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 189
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_49
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 189
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_50
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 189
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_51
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 189
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_52
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 189
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_53
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 189
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_54
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 140
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_55
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 140
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_56
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 140
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_57
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 140
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_58
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 140
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_59
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 140
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_60
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 140
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_61
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 140
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_62
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 140
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_63
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 140
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_64
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 140
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_65
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 140
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_66
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 140
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_67
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 145
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_68
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 146
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_69
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 90
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_70
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 90
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_71
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 90
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_72
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 90
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_73
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 90
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_74
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 90
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_75
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 90
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_76
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 90
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_77
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 90
+        width: 25
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_78
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 90
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_79
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 90
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_80
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 90
+        width: 36
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_81
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 90
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_82
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 90
+        width: 36
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_83
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 90
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_84
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 39
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_85
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 39
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lwalk1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 39
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lwalk2
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 39
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lwalk3
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 39
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_89
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 39
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_90
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 39
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_91
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 39
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_92
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 39
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gunwalkl1
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 39
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gunwalkl2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 39
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: gunwalkl3
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 39
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_96
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 39
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_97
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 39
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_98
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 39
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_99
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 39
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_100
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_101
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_102
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_103
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 0
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_104
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 0
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_105
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 0
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_106
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 0
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_107
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 0
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_108
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 0
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_109
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 0
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_110
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 0
+        width: 28
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_111
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 0
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_112
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 0
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_113
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 0
+        width: 28
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gunple-CowboyDemiseedfixed_114
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 0
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
