@@ -18,13 +18,12 @@ public class PlayerController:MonoBehaviour{
     Animator anim;
     Rigidbody rb;
 
-    public float jumplimit;
-    [SerializeField]
-    private float playerBounds;
+    public float jumplimit;  
     public float shotPower;
     public bool isGrounded;
     public Transform gunBarrel;
     public float fireRate;
+    private int takeDmg;
 
     public Image PressureBar;
 
@@ -33,10 +32,15 @@ public class PlayerController:MonoBehaviour{
 
     [SerializeField]
     private float currentPressure = 100f;
-    private float maxPressure = 100f;
-    private float pressureCost;
+    [SerializeField]
+    private int myHealth = 25;
     [SerializeField]
     private float jumpheight;
+    [SerializeField]
+    private float playerBounds;
+
+    private float maxPressure = 100f;
+    private float pressureCost;
     private float lastShot = 0f;
     private int bulletDmg;
     GameObject bulletType;
@@ -60,6 +64,7 @@ public class PlayerController:MonoBehaviour{
         {
             float move = Input.GetAxis("Horizontal");
             anim.SetFloat("Speed", move);
+            //Debug.Log(move);
         }
     }
 
@@ -108,11 +113,19 @@ public class PlayerController:MonoBehaviour{
         bulletObj.GetComponent<BulletScript>().myDmg = dmg;
 
     }
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
+            myHealth -= takeDmg;
+            Debug.Log("Enemy health is at:" + myHealth);
+            if (myHealth <= 0)
+                Destroy(gameObject);
+        }
+    }
     void Movement()
     {
-        
-
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector2.right * 3f * Time.deltaTime);
