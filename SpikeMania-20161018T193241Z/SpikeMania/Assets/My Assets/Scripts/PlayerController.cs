@@ -2,7 +2,7 @@
 using System.Collections;
 using Image=UnityEngine.UI.Image;
 
-public class ShotType
+public class WeaponClass 
 {
     //fireRate(or mod)
     //bulletType
@@ -12,45 +12,98 @@ public class ShotType
     //create objct of weapontype with all of bullet's attribute stored within (damage calculation stored within weapontype object)
     //construct 3 weapons for each weapon type in array (when firing, spawns bullet with attributes stored in array at weaponarray[index]
     // abstract out all hardcoded names and variables and replace with call to weaponarray and use those attributes
+
+    public int selectedWeapon = 0;
+    public float fireRate;
+    public float fireRateMod;
+    public float pressureCost;
+    public int bulletDmg;
+    public float currentPressure = 100f;
+    private float maxPressure = 100f;
+    private float lastShot = 0f;
+    public GameObject bulletType;
+    public Image PressureBar;
+
+
+    void SpawnBullet(int dmg)
+    {
+        GameObject bulletObj = Instantiate(bulletType, gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
+        bulletObj.GetComponent<Rigidbody>().AddForce(shotDirection * shotPower, ForceMode.Impulse); 
+        bulletObj.GetComponent<BulletScript>().myDmg = dmg;
+
+    }
+
+    public void Shoot()
+    {
+        if (Time.time > (fireRate + fireRateMod) + lastShot)
+        {
+            //pressureCost = 10f;
+            //bulletType = //figure out a way to set it to bullet(at selectedweapon)
+            if (currentPressure / maxPressure >= pressureCost)
+            {
+                //bulletDmg = 1;
+                currentPressure -= pressureCost;
+                if (PressureBar.fillAmount <= pressureCost)
+                    PressureBar.fillAmount = pressureCost;
+                else
+                    PressureBar.fillAmount -= pressureCost;
+            }
+            /*else
+                {
+                    bulletDmg = 1;
+                    //Debug.Log("The result is:" + (currentPressure / maxPressure) + ", and the bullet damage is:" + bulletDmg);
+                    if (PressureBar.fillAmount <= 0.1f)
+                        PressureBar.fillAmount = 0.1f;
+                    else
+                        PressureBar.fillAmount -= 0.1f;
+
+                    currentPressure = 10f;
+                }*/
+
+
+
+            lastShot = Time.time;
+            //Debug.Log(currentPressure);
+        }
+    }
 }
 
 public class PlayerController:MonoBehaviour{
     Animator anim;
     Rigidbody rb;
 
+
     public float jumplimit;  
     public float shotPower;
     public bool isGrounded;
     public Transform gunBarrel;
-    public float fireRate;
+
     private int takeDmg;
 
-    public Image PressureBar;
+
 
     Vector3 shotDirection = Vector3.right;
-    int shotType = 0;
 
-    [SerializeField]
-    private float currentPressure = 100f;
+
     [SerializeField]
     private int myHealth = 25;
     [SerializeField]
     private float jumpheight;
     [SerializeField]
     private float playerBounds;
+    int weaponType = 0; //should change to weapontype
+    public GameObject bullet1;
+    public GameObject bullet2;
+    public GameObject bullet3;
 
-    private float maxPressure = 100f;
-    private float pressureCost;
-    private float lastShot = 0f;
-    private int bulletDmg;
-    GameObject bulletType;
-    public GameObject BaseBullet;
-    public GameObject SecondBullet;
 
+
+    public WeaponClass[] _WeaponClass = new WeaponClass[3];
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
+
     }
 
 
@@ -59,7 +112,7 @@ public class PlayerController:MonoBehaviour{
     {
         //Mathf.Clamp(this.transform.position.x, -2, 2);
         PlayerLimits();
-        SwitchWeapon();
+        FireWeapon();
         Movement();
         {
             float move = Input.GetAxis("Horizontal");
@@ -68,6 +121,8 @@ public class PlayerController:MonoBehaviour{
         }
     }
 
+
+
     void PlayerLimits()
     {
         if (transform.position.x <= -playerBounds) { //if player is going to the left
@@ -75,6 +130,7 @@ public class PlayerController:MonoBehaviour{
         } else if (transform.position.x >= playerBounds) { //if the player is going to the right
             transform.position = new Vector2(playerBounds, transform.position.y);
         }
+
     }
 
 
@@ -89,28 +145,49 @@ public class PlayerController:MonoBehaviour{
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (shotType < 2)
+            if ( weaponType < 2)
             {
-                shotType+=1;
-                Debug.Log("Weapon type:" + shotType);
+                weaponType+=1;
+                Debug.Log("Weapon type:" + weaponType);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (shotType > 0)
+            if (weaponType > 0)
             {
-                shotType-=1;
-                Debug.Log("Weapon type:" + shotType);
+                weaponType-=1;
+                Debug.Log("Weapon type:" + weaponType);
             }
         }
     }
 
-    void SpawnBullet(int dmg)
+    void FireWeapon()
     {
-        GameObject bulletObj = Instantiate(bulletType, gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
-        bulletObj.GetComponent<Rigidbody>().AddForce(shotDirection * shotPower, ForceMode.Impulse); 
-        bulletObj.GetComponent<BulletScript>().myDmg = dmg;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            
+            switch(weaponType)
+            {
+                case(0):
+                    _WeaponClass[weaponType].selectedWeapon = 0;
+                    _WeaponClass[weaponType].fireRateMod = 0;
+                    _WeaponClass[weaponType].pressureCost = 10f;
+                    _WeaponClass[weaponType].bulletDmg = 1;
+                    _WeaponClass[weaponType].bulletType = bullet1; // figure out way to increment name with weapontype
+                    _WeaponClass[weaponType].Shoot();
+                    break;
+                case(1):
+                    _WeaponClass[weaponType].selectedWeapon = 1;
+                    _WeaponClass[weaponType].fireRateMod = 0.5f;
+                    _WeaponClass[weaponType].pressureCost = 20f;
+                    _WeaponClass[weaponType].bulletDmg = 2;
+                    _WeaponClass[weaponType].bulletType = bullet2; // figure out way to increment name with weapontype
+                    _WeaponClass[weaponType].Shoot();
+                    break;
+            }
+        }
+        
 
     }
     void OnCollisionEnter(Collision collision)
@@ -119,7 +196,7 @@ public class PlayerController:MonoBehaviour{
         {
             takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
             myHealth -= takeDmg;
-            Debug.Log("Enemy health is at:" + myHealth);
+            Debug.Log("My health is at:" + myHealth);
             if (myHealth <= 0)
                 Destroy(gameObject);
         }
@@ -153,73 +230,7 @@ public class PlayerController:MonoBehaviour{
         
         }    
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            switch (shotType)
-            {
-                case(0):
-                    if (Time.time > fireRate + lastShot)
-                    {
-                        pressureCost = 10f;
-                        bulletType = BaseBullet;
-                        if (currentPressure / maxPressure >= 0.1f)
-                        {
-                            bulletDmg = 1;
-                            currentPressure -= pressureCost;
-                            if (PressureBar.fillAmount <= 0.1f)
-                                PressureBar.fillAmount = 0.1f;
-                            else
-                                PressureBar.fillAmount -= 0.1f;
-                        }
-                        else
-                        {
-                            currentPressure = pressureCost;
-                        }
-                            
-                        SpawnBullet(bulletDmg);
 
-
-                        lastShot = Time.time;
-                        //Debug.Log(currentPressure);
-                    }
-
-                break;
-                case(1):
-                    if(Time.time > (fireRate + 0.5) + lastShot)
-                    {
-                        pressureCost = 20f;
-                        bulletType = SecondBullet;
-
-                        if ((currentPressure / maxPressure) >= 0.2f)
-                        {
-                            bulletDmg = 2;
-
-                            currentPressure -= pressureCost;
-
-                            if (PressureBar.fillAmount <= 0.2f)
-                                PressureBar.fillAmount = 0.2f;
-                            else
-                                PressureBar.fillAmount -= 0.2f;
-                            //Debug.Log("The result is:" + (currentPressure / maxPressure) + ", and the bullet damage is:" + bulletDmg);
-                        }
-                        else 
-                        {
-                            bulletDmg = 1;
-                            //Debug.Log("The result is:" + (currentPressure / maxPressure) + ", and the bullet damage is:" + bulletDmg);
-                            if (PressureBar.fillAmount <= 0.1f)
-                                PressureBar.fillAmount = 0.1f;
-                            else
-                                PressureBar.fillAmount -= 0.1f;
-                            
-                            currentPressure = 10f;
-                        }
-                        SpawnBullet(bulletDmg);
-                        lastShot = Time.time;
-                        //Debug.Log(currentPressure);
-                    }
-                    break;
-            }
-        }
     }
 
 }

@@ -559,6 +559,18 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: bullet1
+      value: 
+      objectReference: {fileID: 1000010842073620, guid: 33dacab1abb614b4fa0cca5abdd586f7,
+        type: 2}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: bullet2
+      value: 
+      objectReference: {fileID: 1000013452292362, guid: 7dc4e667cdcca2049acb3c2dd86b66e3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
   m_IsPrefabParent: 0
