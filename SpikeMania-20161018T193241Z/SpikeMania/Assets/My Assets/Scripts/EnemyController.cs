@@ -5,21 +5,30 @@ public class EnemyController : MonoBehaviour {
 
     Animator anim;
 
-    private int takeDmg;
-    private int myHealth = 100;
+    public Transform gunBarrel;
 
+    private int takeDmg;
+    private int enemyDmg = 1;
+    private float shotTime = 2.5f;
+    private float timer = 2.5f;
+
+
+    [SerializeField]
+    private int myHealth = 10;
     [SerializeField]
     public float movementSpeed;
     [SerializeField]
     private float distanceToTarget = 2;
 
     bool moving = true;
-	// Use this for initialization
+    bool isFiring = false;
+	
+
+    public GameObject EnemyBullet;
 
 
 	void Start () {
         anim = GetComponent<Animator>();
-
 	}
 	
 	// Update is called once per frame
@@ -31,7 +40,25 @@ public class EnemyController : MonoBehaviour {
             anim.SetFloat("Speed", move);
             //Debug.Log(move);
         }
+        Attack();   
 	}
+
+
+    private void Attack()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            GameObject bulletObj = Instantiate(EnemyBullet, gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
+            bulletObj.GetComponent<Rigidbody>().AddForce(Vector2.left * 2f, ForceMode.Impulse); 
+            bulletObj.GetComponent<BulletScript>().myDmg = enemyDmg;
+            timer = shotTime;
+        }
+    }
+            
+
+
+
     void DistanceCheck()
     {
         if (Vector2.Distance(transform.position,GameObject.Find("Character").transform.position) <= distanceToTarget)
@@ -54,7 +81,7 @@ public class EnemyController : MonoBehaviour {
         {
             takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
             myHealth -= takeDmg;
-            Debug.Log("My health is at:" + myHealth);
+            Debug.Log("Enemy health is at:" + myHealth);
             if (myHealth <= 0)
                 Destroy(gameObject);
         }

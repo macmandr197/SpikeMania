@@ -25,7 +25,7 @@ GameObject:
   - 135: {fileID: 135000012699061484}
   - 114: {fileID: 114000013276733096}
   - 114: {fileID: 114000010933504326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BaseBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
