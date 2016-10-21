@@ -3,39 +3,48 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
+    Animator anim;
 
     private int takeDmg;
     private int myHealth = 100;
 
-    //[SerializeField]
-    public Transform Character;
+    [SerializeField]
+    public float movementSpeed;
     [SerializeField]
     private float distanceToTarget = 2;
+
     bool moving = true;
 	// Use this for initialization
 
 
 	void Start () {
-        //GameObject.Find("Character").transform.position = Character.position;
+        anim = GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //DistanceCheck();
+        DistanceCheck();
         Movement();
+        {
+            float move = Input.GetAxis("Horizontal");
+            anim.SetFloat("Speed", move);
+            //Debug.Log(move);
+        }
 	}
     void DistanceCheck()
     {
-        if (Vector2.Distance(transform.position,Character.position) <= distanceToTarget)
+        if (Vector2.Distance(transform.position,GameObject.Find("Character").transform.position) <= distanceToTarget)
         {
             moving = false;
+            anim.Play("Enemy1Idle");
         }
     }
     void Movement()
     {
-        while(moving)
+        if (moving)
         {
-            transform.Translate(Vector2.left * 3f * Time.deltaTime);
+            transform.Translate(Vector2.left * movementSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
         }
     }
