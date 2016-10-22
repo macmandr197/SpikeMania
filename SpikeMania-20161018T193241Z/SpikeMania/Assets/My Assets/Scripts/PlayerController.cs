@@ -23,7 +23,7 @@ public class WeaponClass : PlayerController
     private float lastShot = 0f; // might want to use logic for this instead of hardcoding it
     public GameObject bulletType;
 
-    PlayerController myPlayer = new PlayerController();
+    //PlayerController myPlayer = new PlayerController();
 
 	/// You are going to want a constructor
 	
@@ -39,8 +39,8 @@ public class WeaponClass : PlayerController
 	
     void SpawnBullet(int dmg)
     {
-        GameObject bulletObj = Instantiate(bulletType,myPlayer.gunBarrel.transform.position, myPlayer.gunBarrel.transform.rotation) as GameObject;
-        bulletObj.GetComponent<Rigidbody>().AddForce(myPlayer.shotDirection * myPlayer.shotPower, ForceMode.Impulse); 
+        GameObject bulletObj = Instantiate(bulletType,gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
+        bulletObj.GetComponent<Rigidbody>().AddForce(shotDirection * shotPower, ForceMode.Impulse); 
         bulletObj.GetComponent<BulletScript>().myDmg = dmg;
     }
 
@@ -48,28 +48,24 @@ public class WeaponClass : PlayerController
     {
         if (Time.time > fireRate + lastShot)
         {
-            //pressureCost = 10f;
-            //bulletType = //figure out a way to set it to bullet(at selectedweapon)
             if (currentPressure / maxPressure >= pressureCost)
             {
-                //bulletDmg = 1;
                 currentPressure -= pressureCost;
-
             }
-            /*else
+            else
                 {
                     bulletDmg = 1;
                     //Debug.Log("The result is:" + (currentPressure / maxPressure) + ", and the bullet damage is:" + bulletDmg);
-                    if (PressureBar.fillAmount <= 0.1f)
-                        PressureBar.fillAmount = 0.1f;
-                    else
-                        PressureBar.fillAmount -= 0.1f;
+               // if (myPlayer.PressureBar.fillAmount <= 0.1f)
+                  //  myPlayer.PressureBar.fillAmount = 0.1f;
+                   // else
+                   // myPlayer.PressureBar.fillAmount -= 0.1f;
 
                     currentPressure = 10f;
-                }*/
+                }
 
 
-
+            SpawnBullet(bulletDmg);
             lastShot = Time.time;
             //Debug.Log(currentPressure);
         }
