@@ -13,24 +13,36 @@ public class WeaponClass
     //construct 3 weapons for each weapon type in array (when firing, spawns bullet with attributes stored in array at weaponarray[index]
     // abstract out all hardcoded names and variables and replace with call to weaponarray and use those attributes
 
-    public int selectedWeapon = 0;
+	/// I'm of the opinion everything here should be private or protected ///
+    public int selectedWeapon = 0; // should go in PlayerController
     public float fireRate;
-    public float fireRateMod;
+    public float fireRateMod; // might not need this now
     public float pressureCost;
     public int bulletDmg;
     public float currentPressure = 100f;
     private float maxPressure = 100f;
-    private float lastShot = 0f;
+    private float lastShot = 0f; // might want to use logic for this instead of hardcoding it
     public GameObject bulletType;
-    public Image PressureBar;
+    public Image PressureBar; // definetly goes in PlayerController, possibly a statis UI class even
 
 
+	/// You are going to want a constructor
+	/*
+	WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab)
+	{
+		this.fireRate = RoF;
+		this.pressureCost = pCo;
+		this.bulletDmg = dmg;
+		this.bulletType = bulletPrefab;
+	}
+	Might not work, but something like that
+	*/
+	
     void SpawnBullet(int dmg)
     {
         GameObject bulletObj = Instantiate(bulletType, gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
         bulletObj.GetComponent<Rigidbody>().AddForce(shotDirection * shotPower, ForceMode.Impulse); 
         bulletObj.GetComponent<BulletScript>().myDmg = dmg;
-
     }
 
     public void Shoot()
@@ -91,18 +103,21 @@ public class PlayerController:MonoBehaviour{
     private float jumpheight;
     [SerializeField]
     private float playerBounds;
-    int weaponType = 0; //should change to weapontype
+    int weaponType = 0; // Let's choose a meaningful name like "currentWeapon"
     public GameObject bullet1;
     public GameObject bullet2;
     public GameObject bullet3;
 
 
 
-    public WeaponClass[] _WeaponClass = new WeaponClass[3];
+    public WeaponClass[] _WeaponClass = new WeaponClass[3]; // Let's choose a meaningful name here. Like myWeapons.
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
+		// call WeaponClass contructor and assign to array[0]
+		// call WeaponClass contructor and assign to array[1]
+		// call WeaponClass contructor and assign to array[2]
 
     }
 
@@ -160,13 +175,16 @@ public class PlayerController:MonoBehaviour{
                 Debug.Log("Weapon type:" + weaponType);
             }
         }
+		// I would add a safety here to keep from going out of bounds
     }
 
     void FireWeapon()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            
+            /// The whole point is so you don't have to set this stuff on the fly.
+			/// You should have set this stuff up in start already
+			// myWeapons[currentWeapon].Shoot();
             switch(weaponType)
             {
                 case(0):
