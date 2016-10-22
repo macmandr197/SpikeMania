@@ -191,6 +191,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013486690768, guid: 17b7ccff2d646234aaf9f089e84cfe9f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17b7ccff2d646234aaf9f089e84cfe9f, type: 2}
   m_IsPrefabParent: 0
@@ -351,6 +355,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438294070}
+--- !u!4 &476637691 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013131270732, guid: 9ff019a5e3695864d8c1555b3b48a710,
+    type: 2}
+  m_PrefabInternal: {fileID: 1094533732}
+--- !u!114 &513608143 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+    type: 2}
+  m_PrefabInternal: {fileID: 1094533732}
+  m_Script: {fileID: 11500000, guid: 1aabdba71de3f6d4db0ad11e2c57e10e, type: 3}
 --- !u!1 &962306171
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +586,16 @@ Prefab:
       value: 
       objectReference: {fileID: 1000013452292362, guid: 7dc4e667cdcca2049acb3c2dd86b66e3,
         type: 2}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: gunBarrel
+      value: 
+      objectReference: {fileID: 476637691}
+    - target: {fileID: 114000011401934490, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: refPlayerController
+      value: 
+      objectReference: {fileID: 513608143}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
   m_IsPrefabParent: 0

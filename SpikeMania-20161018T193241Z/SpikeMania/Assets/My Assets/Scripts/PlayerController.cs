@@ -2,7 +2,7 @@
 using System.Collections;
 using Image=UnityEngine.UI.Image;
 
-public class WeaponClass 
+public class WeaponClass : PlayerController
 {
     //fireRate(or mod)
     //bulletType
@@ -14,7 +14,6 @@ public class WeaponClass
     // abstract out all hardcoded names and variables and replace with call to weaponarray and use those attributes
 
 	/// I'm of the opinion everything here should be private or protected ///
-    public int selectedWeapon = 0; // should go in PlayerController
     public float fireRate;
     public float fireRateMod; // might not need this now
     public float pressureCost;
@@ -23,31 +22,31 @@ public class WeaponClass
     private float maxPressure = 100f;
     private float lastShot = 0f; // might want to use logic for this instead of hardcoding it
     public GameObject bulletType;
-    public Image PressureBar; // definetly goes in PlayerController, possibly a statis UI class even
 
+    PlayerController myPlayer = new PlayerController();
 
 	/// You are going to want a constructor
-	/*
-	WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab)
+	
+	public WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab)
 	{
 		this.fireRate = RoF;
 		this.pressureCost = pCo;
 		this.bulletDmg = dmg;
 		this.bulletType = bulletPrefab;
 	}
-	Might not work, but something like that
-	*/
+	//Might not work, but something like that
+	
 	
     void SpawnBullet(int dmg)
     {
-        GameObject bulletObj = Instantiate(bulletType, gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
-        bulletObj.GetComponent<Rigidbody>().AddForce(shotDirection * shotPower, ForceMode.Impulse); 
+        GameObject bulletObj = Instantiate(bulletType,myPlayer.gunBarrel.transform.position, myPlayer.gunBarrel.transform.rotation) as GameObject;
+        bulletObj.GetComponent<Rigidbody>().AddForce(myPlayer.shotDirection * myPlayer.shotPower, ForceMode.Impulse); 
         bulletObj.GetComponent<BulletScript>().myDmg = dmg;
     }
 
     public void Shoot()
     {
-        if (Time.time > (fireRate + fireRateMod) + lastShot)
+        if (Time.time > fireRate + lastShot)
         {
             //pressureCost = 10f;
             //bulletType = //figure out a way to set it to bullet(at selectedweapon)
@@ -55,10 +54,7 @@ public class WeaponClass
             {
                 //bulletDmg = 1;
                 currentPressure -= pressureCost;
-                if (PressureBar.fillAmount <= pressureCost)
-                    PressureBar.fillAmount = pressureCost;
-                else
-                    PressureBar.fillAmount -= pressureCost;
+
             }
             /*else
                 {
@@ -89,12 +85,12 @@ public class PlayerController:MonoBehaviour{
     public float shotPower;
     public bool isGrounded;
     public Transform gunBarrel;
-
+    public Image PressureBar;
     private int takeDmg;
 
 
 
-    Vector3 shotDirection = Vector3.right;
+    public Vector3 shotDirection = Vector3.right;
 
 
     [SerializeField]
@@ -103,21 +99,20 @@ public class PlayerController:MonoBehaviour{
     private float jumpheight;
     [SerializeField]
     private float playerBounds;
-    int weaponType = 0; // Let's choose a meaningful name like "currentWeapon"
+    int currentWeapon = 0; // Let's choose a meaningful name like "currentWeapon"
     public GameObject bullet1;
     public GameObject bullet2;
     public GameObject bullet3;
 
 
 
-    public WeaponClass[] _WeaponClass = new WeaponClass[3]; // Let's choose a meaningful name here. Like myWeapons.
+    public WeaponClass[] myWeapons = new WeaponClass[2]; // Let's choose a meaningful name here. Like myWeapons.
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
-		// call WeaponClass contructor and assign to array[0]
-		// call WeaponClass contructor and assign to array[1]
-		// call WeaponClass contructor and assign to array[2]
+        myWeapons[0] = new WeaponClass(1f, 10f, 1, bullet1); //RateofFire,PressureCost,Damage,prefab
+        myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2);
 
     }
 
@@ -160,19 +155,19 @@ public class PlayerController:MonoBehaviour{
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if ( weaponType < 2)
+            if ( currentWeapon < 2)
             {
-                weaponType+=1;
-                Debug.Log("Weapon type:" + weaponType);
+                currentWeapon+=1;
+                Debug.Log("Weapon type:" + currentWeapon);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (weaponType > 0)
+            if (currentWeapon > 0)
             {
-                weaponType-=1;
-                Debug.Log("Weapon type:" + weaponType);
+                currentWeapon-=1;
+                Debug.Log("Weapon type:" + currentWeapon);
             }
         }
 		// I would add a safety here to keep from going out of bounds
@@ -184,26 +179,13 @@ public class PlayerController:MonoBehaviour{
         {
             /// The whole point is so you don't have to set this stuff on the fly.
 			/// You should have set this stuff up in start already
-			// myWeapons[currentWeapon].Shoot();
-            switch(weaponType)
-            {
-                case(0):
-                    _WeaponClass[weaponType].selectedWeapon = 0;
-                    _WeaponClass[weaponType].fireRateMod = 0;
-                    _WeaponClass[weaponType].pressureCost = 10f;
-                    _WeaponClass[weaponType].bulletDmg = 1;
-                    _WeaponClass[weaponType].bulletType = bullet1; // figure out way to increment name with weapontype
-                    _WeaponClass[weaponType].Shoot();
-                    break;
-                case(1):
-                    _WeaponClass[weaponType].selectedWeapon = 1;
-                    _WeaponClass[weaponType].fireRateMod = 0.5f;
-                    _WeaponClass[weaponType].pressureCost = 20f;
-                    _WeaponClass[weaponType].bulletDmg = 2;
-                    _WeaponClass[weaponType].bulletType = bullet2; // figure out way to increment name with weapontype
-                    _WeaponClass[weaponType].Shoot();
-                    break;
-            }
+			myWeapons[currentWeapon].Shoot();
+
+            if (PressureBar.fillAmount <= myWeapons[currentWeapon].pressureCost)
+                PressureBar.fillAmount = myWeapons[currentWeapon].pressureCost;
+            else
+                PressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost;
+           
         }
         
 
