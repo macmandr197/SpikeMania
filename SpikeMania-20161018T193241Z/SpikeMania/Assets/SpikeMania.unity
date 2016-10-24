@@ -596,6 +596,17 @@ Prefab:
       propertyPath: refPlayerController
       value: 
       objectReference: {fileID: 513608143}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: myHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: bullet3
+      value: 
+      objectReference: {fileID: 1000010264660622, guid: 5ee0e8612e481cd43a7557f09ffa0573,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
   m_IsPrefabParent: 0

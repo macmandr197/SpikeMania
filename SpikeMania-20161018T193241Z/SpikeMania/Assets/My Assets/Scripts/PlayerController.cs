@@ -26,11 +26,11 @@ public class WeaponClass
     public Transform playerBarrel;
     public Vector3 playerShotDir;
     public float playerShotPow;
-    //PlayerController myPlayer = new PlayerController();
+    private Image pressureBar;
 
 	/// You are going to want a constructor
 
-    public WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab, Transform gBarrel, Vector3 shotDir,float shotPow)
+    public WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab, Transform gBarrel, Vector3 shotDir,float shotPow,Image pBar)
 	{
 		this.fireRate = RoF;
 		this.pressureCost = pCo;
@@ -39,6 +39,7 @@ public class WeaponClass
         this.playerBarrel = gBarrel;
         this.playerShotDir = shotDir;
         this.playerShotPow = shotPow;
+        this.pressureBar = pBar;
 	}
 	//Might not work, but something like that
 	
@@ -52,29 +53,27 @@ public class WeaponClass
 
     public void Shoot()
     {
-        ///Debug.Log("testing132");
         if (Time.time > fireRate + lastShot)
         {
-            if (currentPressure / maxPressure >= pressureCost)
+            if (currentPressure > pressureCost)
             {
                 currentPressure -= pressureCost;
+                pressureBar.fillAmount -= (pressureCost / maxPressure);
+                Debug.Log("My current Pressure is:" + currentPressure);
+
             }
             else
                 {
                     bulletDmg = 1;
-                    //Debug.Log("The result is:" + (currentPressure / maxPressure) + ", and the bullet damage is:" + bulletDmg);
-               // if (myPlayer.PressureBar.fillAmount <= 0.1f)
-                  //  myPlayer.PressureBar.fillAmount = 0.1f;
-                   // else
-                   // myPlayer.PressureBar.fillAmount -= 0.1f;
-
+                Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
+                if (pressureBar.fillAmount <= 0.1f)
+                    pressureBar.fillAmount = 0.1f;
                     currentPressure = 10f;
                 }
 
 
             SpawnBullet(bulletDmg);
             lastShot = Time.time;
-            //Debug.Log(currentPressure);
         }
     }
 }
@@ -109,14 +108,16 @@ public class PlayerController:MonoBehaviour{
 
 
 
-    public WeaponClass[] myWeapons = new WeaponClass[2]; // Let's choose a meaningful name here. Like myWeapons.
+    public WeaponClass[] myWeapons = new WeaponClass[3]; //Creates a new Array Class of Type WeaponClass to be filled in below.
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(1f, 10f, 1, bullet1,gunBarrel,shotDirection,shotPower); //RateofFire,PressureCost,Damage,prefab,GunBarrel,ShotDirection,ShotPower
-        //Debug.Log(myWeapons[0].bulletDmg);
-        myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2,gunBarrel,shotDirection,shotPower);
+        myWeapons[0] = new WeaponClass(1f, 10f, 1, bullet1,gunBarrel,shotDirection,shotPower,PressureBar); //RateofFire,PressureCost,Damage,prefab,GunBarrel,ShotDirection,ShotPower
+        myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2,gunBarrel,shotDirection,shotPower,PressureBar);
+        myWeapons[2] = new WeaponClass(2f,30f,3,bullet3,gunBarrel,shotDirection,shotPower,PressureBar);// creates a new instance of the Weapon class and fills in the specific index of the array class
+        //This method will save quite a bit of nested if statements, and is quite elegant
+        anim.SetFloat("Health",myHealth);
 
     }
 
@@ -124,8 +125,8 @@ public class PlayerController:MonoBehaviour{
 
     void Update()
     {
-        //Mathf.Clamp(this.transform.position.x, -2, 2);
         PlayerLimits();
+        SwitchWeapon();
         FireWeapon();
         Movement();
         {
@@ -150,9 +151,7 @@ public class PlayerController:MonoBehaviour{
 
     public static float CalculateVertJump( float jumptarget)
     {
-
         return Mathf.Sqrt((2f * jumptarget)  /** Physics.gravity.y*/);
-
     }
 
     void SwitchWeapon()
@@ -181,15 +180,7 @@ public class PlayerController:MonoBehaviour{
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            /// The whole point is so you don't have to set this stuff on the fly.
-			/// You should have set this stuff up in start already
-			myWeapons[currentWeapon].Shoot();
-
-            if (PressureBar.fillAmount <= myWeapons[currentWeapon].pressureCost)
-                PressureBar.fillAmount = myWeapons[currentWeapon].pressureCost;
-            else
-                PressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost;
-           
+			myWeapons[currentWeapon].Shoot();                      
         }
         
 
@@ -202,7 +193,10 @@ public class PlayerController:MonoBehaviour{
             myHealth -= takeDmg;
             Debug.Log("My health is at:" + myHealth);
             if (myHealth <= 0)
-                Destroy(gameObject);
+            {
+                anim.SetFloat("Health", myHealth); // value to trigger the death animation
+                Destroy(gameObject,2f); //destroys player gameobject after 2 seconds
+            }                
         }
     }
     void Movement()
@@ -212,7 +206,7 @@ public class PlayerController:MonoBehaviour{
             transform.Translate(Vector2.right * 3f * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             gunBarrel.transform.localPosition = new Vector3(0.316f, 0f, 0f);
-            shotDirection = Vector3.right; 
+            shotDirection = Vector3.right; //shoots in whatever direction the player ios facing, as I do not have appropriate assets to indicate which direction the player is facing
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -225,16 +219,12 @@ public class PlayerController:MonoBehaviour{
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            if (isGrounded)
+            if (isGrounded) //checks to see if the player is touching the ground, if true then the player can use jump again
             {
                 Vector3 velocity = rb.GetComponent<Rigidbody>().velocity;
-                velocity.y = CalculateVertJump(jumpheight);
+                velocity.y = CalculateVertJump(jumpheight); //returns values that range in a parabola to give realistic jump action
                 rb.velocity = velocity;
-            }
-        
-        }    
-
-
+            }        
+        } 
     }
-
 }
