@@ -15,17 +15,17 @@ public class WeaponClass
     // abstract out all hardcoded names and variables and replace with call to weaponarray and use those attributes
 
 	/// I'm of the opinion everything here should be private or protected ///
-    public float fireRate;
-    public float fireRateMod; // might not need this now
-    public float pressureCost;
-    public int bulletDmg;
+    private float fireRate;
+    private float fireRateMod; // might not need this now
+    private float pressureCost;
+    private int bulletDmg;
     public float currentPressure = 100f;
     private float maxPressure = 100f;
     private float lastShot = 0f; // might want to use logic for this instead of hardcoding it
-    public GameObject bulletType;
-    public Transform playerBarrel;
-    public Vector3 playerShotDir;
-    public float playerShotPow;
+    private GameObject bulletType;
+    private Transform playerBarrel;
+    private Vector3 playerShotDir;
+    private float playerShotPow;
     private Image pressureBar;
 
 	/// You are going to want a constructor
@@ -55,18 +55,15 @@ public class WeaponClass
     {
         if (Time.time > fireRate + lastShot)
         {
-            if (currentPressure > pressureCost)
+            if (currentPressure >= pressureCost)
             {
                 currentPressure -= pressureCost;
                 pressureBar.fillAmount -= (pressureCost / maxPressure);
                 Debug.Log("My current Pressure is:" + currentPressure);
 
-            }
-            else
-                {
-                    bulletDmg = 1;
+            }else{                    
                 Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
-                if (pressureBar.fillAmount <= 0.1f)
+                bulletDmg = 1;
                     pressureBar.fillAmount = 0.1f;
                     currentPressure = 10f;
                 }
@@ -77,6 +74,9 @@ public class WeaponClass
         }
     }
 }
+
+
+
 
 public class PlayerController:MonoBehaviour{
     Animator anim;
@@ -117,7 +117,7 @@ public class PlayerController:MonoBehaviour{
         myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2,gunBarrel,shotDirection,shotPower,PressureBar);
         myWeapons[2] = new WeaponClass(2f,30f,3,bullet3,gunBarrel,shotDirection,shotPower,PressureBar);// creates a new instance of the Weapon class and fills in the specific index of the array class
         //This method will save quite a bit of nested if statements, and is quite elegant
-        anim.SetFloat("Health",myHealth);
+        anim.SetFloat("Health",myHealth); // prevents player from instantly playing the death animation
 
     }
 
