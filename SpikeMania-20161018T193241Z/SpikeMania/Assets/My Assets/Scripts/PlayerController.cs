@@ -2,7 +2,8 @@
 using System.Collections;
 using Image=UnityEngine.UI.Image;
 
-public class WeaponClass : PlayerController
+
+public class WeaponClass
 {
     //fireRate(or mod)
     //bulletType
@@ -22,30 +23,36 @@ public class WeaponClass : PlayerController
     private float maxPressure = 100f;
     private float lastShot = 0f; // might want to use logic for this instead of hardcoding it
     public GameObject bulletType;
-
+    public Transform playerBarrel;
+    public Vector3 playerShotDir;
+    public float playerShotPow;
     //PlayerController myPlayer = new PlayerController();
 
 	/// You are going to want a constructor
-	
-	public WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab)
+
+    public WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab, Transform gBarrel, Vector3 shotDir,float shotPow)
 	{
 		this.fireRate = RoF;
 		this.pressureCost = pCo;
 		this.bulletDmg = dmg;
 		this.bulletType = bulletPrefab;
+        this.playerBarrel = gBarrel;
+        this.playerShotDir = shotDir;
+        this.playerShotPow = shotPow;
 	}
 	//Might not work, but something like that
 	
 	
     void SpawnBullet(int dmg)
     {
-        GameObject bulletObj = Instantiate(bulletType,gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
-        bulletObj.GetComponent<Rigidbody>().AddForce(shotDirection * shotPower, ForceMode.Impulse); 
+        GameObject bulletObj = MonoBehaviour.Instantiate(bulletType,playerBarrel.transform.position, playerBarrel.transform.rotation) as GameObject;
+        bulletObj.GetComponent<Rigidbody>().AddForce(playerShotDir * playerShotPow, ForceMode.Impulse); 
         bulletObj.GetComponent<BulletScript>().myDmg = dmg;
     }
 
     public void Shoot()
     {
+        ///Debug.Log("testing132");
         if (Time.time > fireRate + lastShot)
         {
             if (currentPressure / maxPressure >= pressureCost)
@@ -107,8 +114,9 @@ public class PlayerController:MonoBehaviour{
     {
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(1f, 10f, 1, bullet1); //RateofFire,PressureCost,Damage,prefab
-        myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2);
+        myWeapons[0] = new WeaponClass(1f, 10f, 1, bullet1,gunBarrel,shotDirection,shotPower); //RateofFire,PressureCost,Damage,prefab,GunBarrel,ShotDirection,ShotPower
+        //Debug.Log(myWeapons[0].bulletDmg);
+        myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2,gunBarrel,shotDirection,shotPower);
 
     }
 
