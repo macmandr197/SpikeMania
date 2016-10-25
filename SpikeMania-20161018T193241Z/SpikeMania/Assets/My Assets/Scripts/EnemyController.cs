@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour {
     private float distanceToTarget = 2;
 
     bool moving = true;
-    bool isFiring = false;
+    //bool isFiring = false;
 	
 
     public GameObject EnemyBullet;
