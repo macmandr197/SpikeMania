@@ -1,36 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Image=UnityEngine.UI.Image;
+using Text=UnityEngine.UI.Text;
 
 
 public class WeaponClass
 {
-    //fireRate(or mod)
-    //bulletType
-    //damage
-    //pressure cost
-
-    //create objct of weapontype with all of bullet's attribute stored within (damage calculation stored within weapontype object)
-    //construct 3 weapons for each weapon type in array (when firing, spawns bullet with attributes stored in array at weaponarray[index]
-    // abstract out all hardcoded names and variables and replace with call to weaponarray and use those attributes
-
 	/// I'm of the opinion everything here should be private or protected ///
-    private float fireRate;
-    private float fireRateMod; // might not need this now
-    private float pressureCost;
-    private int bulletDmg;
-    public float currentPressure = 100f;
-    private float maxPressure = 100f;
-    private float lastShot = 0f; // might want to use logic for this instead of hardcoding it
+    public float fireRate;
+    public float pressureCost;
+    public int bulletDmg;
+
+
     private GameObject bulletType;
     private Transform playerBarrel;
     private Vector3 playerShotDir;
     private float playerShotPow;
-    private Image pressureBar;
 
-	/// You are going to want a constructor
 
-    public WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab, Transform gBarrel, Vector3 shotDir,float shotPow,Image pBar)
+    public WeaponClass (float RoF, float pCo, int dmg, GameObject bulletPrefab, Transform gBarrel, Vector3 shotDir,float shotPow)
 	{
 		this.fireRate = RoF;
 		this.pressureCost = pCo;
@@ -39,9 +27,8 @@ public class WeaponClass
         this.playerBarrel = gBarrel;
         this.playerShotDir = shotDir;
         this.playerShotPow = shotPow;
-        this.pressureBar = pBar;
 	}
-	//Might not work, but something like that
+
 	
 	
     void SpawnBullet(int dmg)
@@ -52,26 +39,8 @@ public class WeaponClass
     }
 
     public void Shoot()
-    {
-        if (Time.time > fireRate + lastShot)
-        {
-            if (currentPressure >= pressureCost)
-            {
-                currentPressure -= pressureCost;
-                pressureBar.fillAmount -= (pressureCost / maxPressure);
-                Debug.Log("My current Pressure is:" + currentPressure);
-
-            }else{                    
-                Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
-                bulletDmg = 1;
-                    pressureBar.fillAmount = 0.1f;
-                    currentPressure = 10f;
-                }
-
-
+    {                
             SpawnBullet(bulletDmg);
-            lastShot = Time.time;
-        }
     }
 }
 
@@ -82,29 +51,36 @@ public class PlayerController:MonoBehaviour{
     Animator anim;
     Rigidbody rb;
 
-
-    public float jumplimit;  
-    public float shotPower;
-    public bool isGrounded;
-    public Transform gunBarrel;
+    [Header ("UI Elements")]
+    [Space(5)]
     public Image PressureBar;
-    private int takeDmg;
+    public Text PressureText;
 
-
-
+    [Header("Player Attributes")]
+    [Space(5)]
+    public float jumplimit;  
     public Vector3 shotDirection = Vector3.right;
-
-
+    public bool isGrounded;
+    [SerializeField]
+    private float jumpheight;
+    public float shotPower;
+    public Transform gunBarrel;
     [SerializeField]
     private int myHealth = 25;
     [SerializeField]
-    private float jumpheight;
-    [SerializeField]
     private float playerBounds;
-    int currentWeapon = 0; // Let's choose a meaningful name like "currentWeapon"
+    [Space(5)]
+
+    [Header("Weapon Attributes")]
     public GameObject bullet1;
     public GameObject bullet2;
     public GameObject bullet3;
+    public float currentPressure = 100f;
+    private float maxPressure = 100f;
+    private int takeDmg;
+    int currentWeapon = 0;
+    private float lastShot = 0f;
+   
 
 
 
@@ -113,11 +89,12 @@ public class PlayerController:MonoBehaviour{
     {
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(1f, 10f, 1, bullet1,gunBarrel,shotDirection,shotPower,PressureBar); //RateofFire,PressureCost,Damage,prefab,GunBarrel,ShotDirection,ShotPower
-        myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2,gunBarrel,shotDirection,shotPower,PressureBar);
-        myWeapons[2] = new WeaponClass(2f,30f,3,bullet3,gunBarrel,shotDirection,shotPower,PressureBar);// creates a new instance of the Weapon class and fills in the specific index of the array class
+        myWeapons[0] = new WeaponClass(1f, 10f, 1, bullet1,gunBarrel,shotDirection,shotPower); //RateofFire,PressureCost,Damage,prefab,GunBarrel,ShotDirection,ShotPower
+        myWeapons[1] = new WeaponClass(1.5f,20f,2,bullet2,gunBarrel,shotDirection,shotPower);
+        myWeapons[2] = new WeaponClass(2f,30f,3,bullet3,gunBarrel,shotDirection,shotPower);// creates a new instance of the Weapon class and fills in the specific index of the array class
         //This method will save quite a bit of nested if statements, and is quite elegant
         anim.SetFloat("Health",myHealth); // prevents player from instantly playing the death animation
+        PressureText.text = ("Pressure:" + currentPressure);
 
     }
 
@@ -173,14 +150,36 @@ public class PlayerController:MonoBehaviour{
                 Debug.Log("Weapon type:" + currentWeapon);
             }
         }
-		// I would add a safety here to keep from going out of bounds
     }
 
     void FireWeapon()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-			myWeapons[currentWeapon].Shoot();                      
+            if (Time.time > myWeapons[currentWeapon].fireRate + lastShot)
+            { 
+                if (currentPressure > myWeapons[currentWeapon].pressureCost)
+                {
+                    currentPressure -= myWeapons[currentWeapon].pressureCost;
+                    PressureText.text = ("Pressure:" + currentPressure);
+                    if (PressureBar.fillAmount <= 0.1f)
+                    {
+                        PressureBar.fillAmount = 0.1f;
+                    }
+                    else
+                    {
+                        PressureBar.fillAmount -= (myWeapons[currentWeapon].pressureCost / maxPressure);
+                    }
+                }
+                else
+                {                    
+                    Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
+                    myWeapons[currentWeapon].bulletDmg = 1;                    
+                    currentPressure = 10f;
+                }
+                myWeapons[currentWeapon].Shoot(); //after checking to see whether or not the player has enough pressure in the tank to fire, the bullet's damage will then be assigned accordingly. After which, this bullet will be fired.
+                lastShot = Time.time;
+            }			
         }
         
 
