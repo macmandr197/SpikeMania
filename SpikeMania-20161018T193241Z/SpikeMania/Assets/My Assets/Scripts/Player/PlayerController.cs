@@ -17,7 +17,7 @@ public class WeaponClass
 
     private GameObject bulletType;
     private Transform playerBarrel;
-    private Vector3 playerShotDir;
+    public Vector3 playerShotDir;
     private float playerShotPow;
 
 
@@ -112,18 +112,6 @@ public class PlayerController:MonoBehaviour{
 
 
 
-    void Update()
-    {
-        PlayerLimits();
-        SwitchWeapon();
-        FireWeapon();
-        Movement();
-        {
-            float move = Input.GetAxis("Horizontal");
-            anim.SetFloat("Speed", move);
-            //Debug.Log(move);
-        }
-    }
 
 
 
@@ -240,7 +228,7 @@ public class PlayerController:MonoBehaviour{
             transform.Translate(Vector2.right * 3f * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             gunBarrel.transform.localPosition = new Vector3(0.316f, 0f, 0f);
-            shotDirection = Vector3.right; //shoots in whatever direction the player ios facing, as I do not have appropriate assets to indicate which direction the player is facing
+            shotDirection = Vector3.right; //shoots in whatever direction the player is facing, as I do not have appropriate assets to indicate which direction the player is facing
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -260,5 +248,18 @@ public class PlayerController:MonoBehaviour{
                 rb.velocity = velocity;
             }        
         } 
+    }
+    void Update()
+    {
+        PlayerLimits();
+        SwitchWeapon();
+        myWeapons[currentWeapon].playerShotDir = shotDirection;
+        FireWeapon();
+        Movement();
+        {
+            float move = Input.GetAxis("Horizontal");
+            anim.SetFloat("Speed", move);
+            //Debug.Log(move);
+        }
     }
 }
