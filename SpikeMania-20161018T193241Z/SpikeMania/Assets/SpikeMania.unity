@@ -451,17 +451,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438294070}
---- !u!4 &476637691 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013131270732, guid: 9ff019a5e3695864d8c1555b3b48a710,
-    type: 2}
-  m_PrefabInternal: {fileID: 1094533732}
---- !u!114 &513608143 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-    type: 2}
-  m_PrefabInternal: {fileID: 1094533732}
-  m_Script: {fileID: 11500000, guid: 1aabdba71de3f6d4db0ad11e2c57e10e, type: 3}
 --- !u!1 &962306171
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +626,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000014176963648, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
@@ -683,72 +672,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
         type: 2}
-      propertyPath: shotPower
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012594890224, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012594890224, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012594890224, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012451940686, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
       propertyPath: PressureBar
       value: 
       objectReference: {fileID: 438294072}
-    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
-      propertyPath: playerBounds
-      value: 3.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012451940686, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
-      propertyPath: bullet1
-      value: 
-      objectReference: {fileID: 1000010842073620, guid: 33dacab1abb614b4fa0cca5abdd586f7,
-        type: 2}
-    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
-      propertyPath: bullet2
-      value: 
-      objectReference: {fileID: 1000013452292362, guid: 7dc4e667cdcca2049acb3c2dd86b66e3,
-        type: 2}
-    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
-      propertyPath: gunBarrel
-      value: 
-      objectReference: {fileID: 476637691}
-    - target: {fileID: 114000011401934490, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
-      propertyPath: refPlayerController
-      value: 
-      objectReference: {fileID: 513608143}
-    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
-      propertyPath: myHealth
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
-        type: 2}
-      propertyPath: bullet3
-      value: 
-      objectReference: {fileID: 1000010264660622, guid: 5ee0e8612e481cd43a7557f09ffa0573,
-        type: 2}
     - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
         type: 2}
       propertyPath: PressureText

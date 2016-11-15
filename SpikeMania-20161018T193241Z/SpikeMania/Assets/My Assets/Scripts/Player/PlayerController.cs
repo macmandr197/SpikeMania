@@ -188,6 +188,8 @@ public class PlayerController:MonoBehaviour{
         }
         
 
+
+
     }
     void OnCollisionEnter(Collision collision)
     {

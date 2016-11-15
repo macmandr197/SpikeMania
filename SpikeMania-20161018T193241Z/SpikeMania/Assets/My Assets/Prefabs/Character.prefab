@@ -26,7 +26,7 @@ GameObject:
   - 54: {fileID: 54000014128279174}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,10 +191,10 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0}
   isGrounded: 0
   jumpheight: 10
-  shotPower: 3
+  shotPower: 2
   gunBarrel: {fileID: 4000013131270732}
   myHealth: 25
-  playerBounds: 5
+  playerBounds: 3.2
   bullet1: {fileID: 1000010842073620, guid: 33dacab1abb614b4fa0cca5abdd586f7, type: 2}
   bullet2: {fileID: 1000013452292362, guid: 7dc4e667cdcca2049acb3c2dd86b66e3, type: 2}
   bullet3: {fileID: 1000010264660622, guid: 5ee0e8612e481cd43a7557f09ffa0573, type: 2}
