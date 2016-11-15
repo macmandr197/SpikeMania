@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Image=UnityEngine.UI.Image;
 using Text=UnityEngine.UI.Text;
 
@@ -9,7 +10,7 @@ public class WeaponClass
 	/// I'm of the opinion everything here should be private or protected ///
     public float fireRate;
     public float pressureCost;
-    public int bulletDmg;
+    public float bulletDmg;
     public string weaponName;
     public int dmgMod;
     public int baseDmg;
@@ -21,7 +22,7 @@ public class WeaponClass
 
 
 
-    public WeaponClass (float RoF, float pCo, int dmg,int dBase,int dMod, GameObject bulletPrefab, Transform gBarrel, Vector3 shotDir,float shotPow,string wName)
+    public WeaponClass (float RoF, float pCo, float dmg,int dBase,int dMod, GameObject bulletPrefab, Transform gBarrel, Vector3 shotDir,float shotPow,string wName)
 	{
 		this.fireRate = RoF;
 		this.pressureCost = pCo;
@@ -38,7 +39,7 @@ public class WeaponClass
 
 	
 	
-    void SpawnBullet(int dmg)
+    void SpawnBullet(float dmg)
     {
         GameObject bulletObj = MonoBehaviour.Instantiate(bulletType,playerBarrel.transform.position, playerBarrel.transform.rotation) as GameObject;
         bulletObj.GetComponent<Rigidbody>().AddForce(playerShotDir * playerShotPow, ForceMode.Impulse); 
@@ -62,7 +63,8 @@ public class PlayerController:MonoBehaviour{
     [Space(5)]
     public Image PressureBar;
     public Text PressureText;
-
+    public Image HealthBar;
+    public Text HealthText;
     [Header("Player Attributes")]
     [Space(5)]
     public float jumplimit;  
@@ -73,7 +75,8 @@ public class PlayerController:MonoBehaviour{
     public float shotPower;
     public Transform gunBarrel;
     [SerializeField]
-    private int myHealth = 25;
+    private float myHealth = 25;
+    private float maxHealth = 25;
     [SerializeField]
     private float playerBounds;
     [Space(5)]
@@ -84,7 +87,7 @@ public class PlayerController:MonoBehaviour{
     public GameObject bullet3;
     public float currentPressure = 100f;
     public float maxPressure = 100f;
-    private int takeDmg;
+    private float takeDmg;
     public int currentWeapon = 0;
     private float lastShot = 0f;
 
@@ -97,12 +100,13 @@ public class PlayerController:MonoBehaviour{
     {
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(1f, 10f, 0,1,0, bullet1,gunBarrel,shotDirection,shotPower,"light"); //RateofFire,PressureCost,Damage,prefab,GunBarrel,ShotDirection,ShotPower
-        myWeapons[1] = new WeaponClass(1.5f,20f,0,1,1,bullet2,gunBarrel,shotDirection,shotPower,"medium");
-        myWeapons[2] = new WeaponClass(2f,30f,0,1,2,bullet3,gunBarrel,shotDirection,shotPower,"heavy");// creates a new instance of the Weapon class and fills in the specific index of the array class
+        myWeapons[0] = new WeaponClass(1f, 10f, 0f,1,0, bullet1,gunBarrel,shotDirection,shotPower,"light"); //RateofFire,PressureCost,Damage,prefab,GunBarrel,ShotDirection,ShotPower
+        myWeapons[1] = new WeaponClass(1.5f,20f,0f,1,1,bullet2,gunBarrel,shotDirection,shotPower,"medium");
+        myWeapons[2] = new WeaponClass(2f,30f,0f,1,2,bullet3,gunBarrel,shotDirection,shotPower,"heavy");// creates a new instance of the Weapon class and fills in the specific index of the array class
         //This method will save quite a bit of nested if statements, and is quite elegant
         anim.SetFloat("Health",myHealth); // prevents player from instantly playing the death animation
         PressureText.text = ("Pressure:" + currentPressure);
+        HealthText.text = ("Health: " + myHealth);
 
     }
 
@@ -160,8 +164,9 @@ public class PlayerController:MonoBehaviour{
                 
             Debug.Log("Weapon type:" + myWeapons[currentWeapon].weaponName);
         }
+        
     }
-
+   
     void FireWeapon()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -185,10 +190,11 @@ public class PlayerController:MonoBehaviour{
                 else
                 {                    
                     Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
-                    myWeapons[currentWeapon].bulletDmg = 1;                    
+                    myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].baseDmg;                    
                     currentPressure = 10f;
                 }
-                myWeapons[currentWeapon].Shoot(); //after checking to see whether or not the player has enough pressure in the tank to fire, the bullet's damage will then be assigned accordingly. After which, this bullet will be fired.
+                myWeapons[currentWeapon].Shoot(); 
+                //after checking to see whether or not the player has enough pressure in the tank to fire, the bullet's damage will then be assigned accordingly. After which, this bullet will be fired.
                 lastShot = Time.time;
             }			
         }
@@ -199,15 +205,33 @@ public class PlayerController:MonoBehaviour{
     {
         if (collision.gameObject.tag == "EnemyBullet")
         {
-            takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
-            myHealth -= takeDmg;
-            Debug.Log("My health is at:" + myHealth);
-            if (myHealth <= 0)
+            if (myHealth > 0)
             {
-                anim.SetFloat("Health", myHealth); // value to trigger the death animation
-                Destroy(gameObject,2f); //destroys player gameobject after 2 seconds
-            }                
+                takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg; // getting the damage value from the bullet
+                myHealth -= takeDmg; //subtract damage from bullet
+                HealthBar.fillAmount -= (takeDmg/maxHealth); //update healthbar fill
+                UpdateHealth();
+
+                //Debug.Log("My health is at:" + myHealth);
+                if (myHealth <= 0)
+                {
+                    anim.SetFloat("Health", myHealth); // value to trigger the death animation
+                    Destroy(gameObject, 2f); //destroys player gameobject after 2 seconds
+                }                
+            }
         }
+    }
+
+    void ApplyDamage(float damage)
+    {
+        Debug.Log("Hit for: " + damage + " health.");
+        myHealth -= damage;
+        UpdateHealth();
+    }
+    void UpdateHealth()
+    {
+        HealthText.text = ("Health: " + myHealth);
+        HealthBar.fillAmount = (myHealth / maxHealth);
     }
     void Movement()
     {

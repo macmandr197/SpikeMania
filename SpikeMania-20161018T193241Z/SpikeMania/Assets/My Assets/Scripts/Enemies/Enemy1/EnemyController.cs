@@ -7,14 +7,14 @@ public class EnemyController : MonoBehaviour {
 
     public Transform gunBarrel;
 
-    private int takeDmg;
+    private float takeDmg;
     private int enemyDmg = 1;
     private float shotTime = 2.5f;
     private float timer = 2.5f;
 
 
     [SerializeField]
-    private int myHealth = 10;
+    private float myHealth = 10;
     [SerializeField]
     public float movementSpeed;
     [SerializeField]

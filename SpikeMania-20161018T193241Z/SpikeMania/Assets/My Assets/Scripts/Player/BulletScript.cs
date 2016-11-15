@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BulletScript : MonoBehaviour {
-    public int myDmg;
+    public float myDmg;
 	// Use this for initialization
 	void Start () {
         Debug.Log("The bullet's damage value is:" + myDmg);

@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
         enemies = new GameObject[2];
         enemies[0] = enemy1;
+        enemies[1] = enemy2;
 	
 	}
 
@@ -36,7 +37,7 @@ void Update ()
     if(! isSpawning)
     {
         isSpawning = true; //Yep, we're going to spawn
-        int enemyIndex = Random.Range(0, enemies.Length-1);
+        int enemyIndex = Random.Range(0, enemies.Length);
         StartCoroutine(SpawnObject(enemyIndex, Random.Range(minTime, maxTime)));
     }
 }
