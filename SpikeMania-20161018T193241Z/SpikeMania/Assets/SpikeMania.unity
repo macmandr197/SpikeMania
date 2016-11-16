@@ -585,52 +585,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2064983573}
   m_RootOrder: 2
---- !u!1001 &1022667751
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.03110212
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.0915982
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011467800784, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000014176963648, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1094533732
 Prefab:
   m_ObjectHideFlags: 0
@@ -668,7 +622,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012594890224, guid: 9ff019a5e3695864d8c1555b3b48a710, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
         type: 2}
@@ -688,6 +642,26 @@ Prefab:
     - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
         type: 2}
       propertyPath: HealthText
+      value: 
+      objectReference: {fileID: 66029167}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: pressureBar
+      value: 
+      objectReference: {fileID: 438294072}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: pressureText
+      value: 
+      objectReference: {fileID: 1973888495}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 321874661}
+    - target: {fileID: 114000013322115192, guid: 9ff019a5e3695864d8c1555b3b48a710,
+        type: 2}
+      propertyPath: healthText
       value: 
       objectReference: {fileID: 66029167}
     m_RemovedComponents: []
@@ -853,7 +827,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1585644183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1929544859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,8 +1161,8 @@ MonoBehaviour:
   enemy1: {fileID: 1000013486690768, guid: 17b7ccff2d646234aaf9f089e84cfe9f, type: 2}
   enemy2: {fileID: 1000014176963648, guid: f86bff5f3aea6954e83946efaadf17ac, type: 2}
   enemy3: {fileID: 0}
-  minTime: 1
   maxTime: 3
+  minTime: 1
 --- !u!4 &1929544860
 Transform:
   m_ObjectHideFlags: 0
@@ -1201,7 +1175,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1973888493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,4 +1280,4 @@ Transform:
   - {fileID: 1585644184}
   - {fileID: 967320149}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3

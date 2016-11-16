@@ -1,15 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿// 20161114
 
-public class BulletScript : MonoBehaviour {
+using UnityEngine;
+
+public class BulletScript : MonoBehaviour
+{
     public float myDmg;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    private void Start()
+    {
         Debug.Log("The bullet's damage value is:" + myDmg);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
 }

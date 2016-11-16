@@ -1,11 +1,12 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿// 2016  11 14 Andrew MacMillan
 
-public class CollisionDetection : MonoBehaviour {
+using UnityEngine;
 
-    void OnCollisionEnter(Collision collision)
+public class CollisionDetection : MonoBehaviour
+{
+    private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Bounds")
+        if ((collision.gameObject.tag == "Enemy") || (collision.gameObject.tag == "Bounds"))
             Destroy(gameObject);
     }
 }

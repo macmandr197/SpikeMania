@@ -69,11 +69,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ce2067f204ee04b814df0878880eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circRad: 0.025
   angle: 0
   bomb: {fileID: 1000011062309108, guid: f7b7538c68bef7d4cb8db6ba51f08cfb, type: 2}
-  distanceToTarget: 2
   bombInterval: 1
+  circRad: 0.025
+  distanceToTarget: 2
 --- !u!136 &136000012595677730
 CapsuleCollider:
   m_ObjectHideFlags: 1
