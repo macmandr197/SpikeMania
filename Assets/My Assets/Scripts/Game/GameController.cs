@@ -9,19 +9,23 @@ public class GameController : MonoBehaviour
     public GameObject enemy3;
 
     private bool isSpawning = false;
-    public float maxTime = 6.0f;
-    public float minTime = 2.0f;
+    private float maxTime = 8f;
+    private float minTime = 4f;
+
+    private int enemyIndex;
+    private int diffRating = 50;
 
     private void Start()
     {
-        enemies = new GameObject[2];
+        enemies = new GameObject[3]; //the actual number of elements you want the array to conatin. The array will start a t index 0, and proceed to the defined limit
         enemies[0] = enemy1;
         enemies[1] = enemy2;
+        enemies[2] = enemy3;
     }
 
     private IEnumerator SpawnObject(int index, float seconds)
     {
-        // Debug.Log ("Waiting for " + seconds + " seconds");
+         //Debug.Log ("Waiting for " + seconds + " seconds");
 
         yield return new WaitForSeconds(seconds);
         Instantiate(enemies[index], transform.position, transform.rotation);
@@ -36,7 +40,14 @@ public class GameController : MonoBehaviour
         if (!isSpawning)
         {
             isSpawning = true; //Yep, we're going to spawn
-            var enemyIndex = Random.Range(0, enemies.Length);
+            int spawnRating = Random.Range(0, diffRating);
+            if (spawnRating <= 30)
+                enemyIndex = 0;
+            else if (spawnRating >= 21 && spawnRating <= 44)
+                enemyIndex = 1;
+            else
+                enemyIndex = 2;
+
             StartCoroutine(SpawnObject(enemyIndex, Random.Range(minTime, maxTime)));
         }
     }

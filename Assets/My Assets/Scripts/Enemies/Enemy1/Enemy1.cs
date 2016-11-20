@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Enemy1 : MonoBehaviour
 {
     private Animator anim;
 
@@ -15,12 +15,12 @@ public class EnemyController : MonoBehaviour
     private bool moving = true;
 
 
-    [SerializeField] private float myHealth = 10;
+    [SerializeField] private float myHealth = 5;
 
-    private float shotTime = 2.5f;
+    private float shotTime = 1.5f;
 
     private float takeDmg;
-    private float timer = 2.5f;
+    private float timer = 1.5f;
 
 
     private void Start()
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
 
     private void ApplyDamage(float damage)
     {
-        Debug.Log("Hit for: " + damage + " health.");
+        //Debug.Log("Hit for: " + damage + " health.");
         myHealth -= damage;
         //UpdateHealth();
     }
@@ -41,9 +41,9 @@ public class EnemyController : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            var bulletObj = Instantiate(EnemyBullet, gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject;
-            bulletObj.GetComponent<Rigidbody>().AddForce(Vector2.left * 2f, ForceMode.Impulse);
-            bulletObj.GetComponent<BulletScript>().myDmg = enemyDmg;
+            var bulletObj = Instantiate(EnemyBullet, gunBarrel.transform.position, gunBarrel.transform.rotation) as GameObject; //instantiating the bullet to shoot at player
+            bulletObj.GetComponent<Rigidbody>().AddForce(Vector2.left * 2f, ForceMode.Impulse); //adding force to the bullet so it moves
+            bulletObj.GetComponent<BulletScript>().myDmg = enemyDmg; //setting the damage of the bullet inherited from enemyDmg.
             timer = shotTime;
         }
     }
@@ -51,10 +51,11 @@ public class EnemyController : MonoBehaviour
 
     private void DistanceCheck()
     {
-        if (Vector2.Distance(transform.position, GameObject.Find("Character").transform.position) <= distanceToTarget)
+        if (Vector2.Distance(transform.position, GameObject.Find("Character").transform.position) <= distanceToTarget && transform.position.x < 3.2) //if Player is within range of the player
         {
             moving = false;
             anim.Play("Enemy1Idle");
+            Attack();
         }
     }
 
@@ -73,7 +74,7 @@ public class EnemyController : MonoBehaviour
         {
             takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
             myHealth -= takeDmg;
-            Debug.Log("Enemy health is at:" + myHealth);
+            //Debug.Log("Enemy health is at:" + myHealth);
             
         }
     }
@@ -91,6 +92,6 @@ public class EnemyController : MonoBehaviour
             anim.SetFloat("Speed", move);
             //Debug.Log(move);
         }
-        Attack();
+        
     }
 }

@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(1f, 10f, 0f, 1, 0, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
+        myWeapons[0] = new WeaponClass(0.5f, 10f, 0f, 1, 0, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
         myWeapons[1] = new WeaponClass(1.5f, 20f, 0f, 1, 1, bullet2, gunBarrel, shotDirection, shotPower, "medium");
         myWeapons[2] = new WeaponClass(2f, 30f, 0f, 1, 2, bullet3, gunBarrel, shotDirection, shotPower, "heavy");
             // creates a new instance of the Weapon class and fills in the specific index of the array class
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     public static float CalculateVertJump(float jumptarget)
     {
-        return Mathf.Sqrt(2f * jumptarget /** Physics.gravity.y*/);
+        return Mathf.Sqrt(2f * jumptarget /** Physics.gravity.y*/); //simulates a parabola for the player to jump in. Instead of just up and down
     }
 
     private void SwitchWeapon()
