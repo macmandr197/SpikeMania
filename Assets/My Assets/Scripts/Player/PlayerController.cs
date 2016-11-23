@@ -3,6 +3,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class WeaponClass
 {
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
     
 
     [Header("UI Elements")] [Space(5)]
+    public List <Image> WBGImg;
     public Image pressureBar;
     public Text pressureText;
     public Image healthBar;
@@ -89,9 +91,32 @@ public class PlayerController : MonoBehaviour
     public Vector3 shotDirection = Vector3.right;
     public float shotPower;
     private float takeDmg;
+    public Image WBG0;
+    public Image WBG1;
+    public Image WBG2;
+
+
+
+
+
+
+
+    void Awake()
+    {
+        WBGImg = new List<Image>(3);
+        WBGImg.Add(WBG0);
+        WBGImg.Add(WBG1);
+        WBGImg.Add(WBG2);
+        for (int i = 0; i <= WBGImg.Count - 1; i++)
+        {
+            WBGImg[i].enabled = false;
+        }
+        WBGImg[currentWeapon].enabled = true;
+    }
 
     private void Start()
     {
+       
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         myWeapons[0] = new WeaponClass(0.5f, 5f, 0f, 1, 0, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
@@ -124,7 +149,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentWeapon = (currentWeapon + 1) % 3; //using mod to wrap the player's weapons after overflow
-            Debug.Log("Weapon type:" + myWeapons[currentWeapon].weaponName);
+            //Debug.Log("Weapon type:" + myWeapons[currentWeapon].weaponName);
+            for (int i = 0; i <= WBGImg.Count-1; i++)
+            {
+                WBGImg[i].enabled = false;
+            }
+            WBGImg[currentWeapon].enabled = true;
+
         }
 
         else if (Input.GetKeyDown(KeyCode.Q))
@@ -132,7 +163,12 @@ public class PlayerController : MonoBehaviour
             currentWeapon = (currentWeapon - 1) % 3;
             currentWeapon = currentWeapon < 0 ? currentWeapon + 3 : currentWeapon;
 
-            Debug.Log("Weapon type:" + myWeapons[currentWeapon].weaponName);
+            //Debug.Log("Weapon type:" + myWeapons[currentWeapon].weaponName);
+            for (int i = 0; i <= WBGImg.Count-1; i++)
+            {
+                WBGImg[i].enabled = false;
+            }
+            WBGImg[currentWeapon].enabled = true;
         }
     }
 
