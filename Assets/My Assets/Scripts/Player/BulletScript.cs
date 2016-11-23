@@ -8,6 +8,6 @@ public class BulletScript : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        Debug.Log("The bullet's damage value is:" + myDmg);
+        //Debug.Log("The bullet's damage value is:" + myDmg);
     }
 }

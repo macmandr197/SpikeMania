@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private float minTime = 4f;
 
     private int enemyIndex;
-    private int diffRating = 50;
+    private int diffRating = 100;
 
     private void Start()
     {
@@ -39,16 +39,28 @@ public class GameController : MonoBehaviour
         //We only want to spawn one at a time, so make sure we're not already making that call
         if (!isSpawning)
         {
-            isSpawning = true; //Yep, we're going to spawn
-            int spawnRating = Random.Range(0, diffRating);
-            if (spawnRating <= 30)
-                enemyIndex = 0;
-            else if (spawnRating >= 21 && spawnRating <= 44)
-                enemyIndex = 1;
+            if (GameObject.Find("Enemy3") != null)
+            {
+                isSpawning = false;
+                //Debug.Log("Boss Battle!");
+            }
             else
-                enemyIndex = 2;
+            {
+                //Debug.Log("ResumingSpawn!");
+                isSpawning = true; //Yep, we're going to spawn
+                int spawnRating = Random.Range(0, diffRating);
 
-            StartCoroutine(SpawnObject(enemyIndex, Random.Range(minTime, maxTime)));
+
+                if (spawnRating <= 30)
+                    enemyIndex = 0; //trooper
+                else if (spawnRating >= 21 && spawnRating <= 44)
+                    enemyIndex = 1; //spaceship
+                else if (spawnRating == 100)
+                    enemyIndex = 2; //boss
+
+                StartCoroutine(SpawnObject(enemyIndex, Random.Range(minTime, maxTime)));
+            }
+            
         }
     }
 }

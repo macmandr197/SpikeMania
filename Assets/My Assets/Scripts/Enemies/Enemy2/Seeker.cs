@@ -33,7 +33,7 @@ public class Seeker : MonoBehaviour
         if (bombsSpawned <= bombsToSpawn)
         {
             yield return new WaitForSeconds(bombInterval);
-            var bombObj = Instantiate(bomb, transform.position, transform.rotation) as GameObject;
+            Instantiate(bomb, transform.position, transform.rotation);
             bombInterval = Random.Range(2f, 4f);
             bombsSpawned += 1;
         }

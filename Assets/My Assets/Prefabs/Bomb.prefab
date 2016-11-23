@@ -24,6 +24,7 @@ GameObject:
   - 135: {fileID: 135000012323174846}
   - 114: {fileID: 114000012475639112}
   - 135: {fileID: 135000011788049122}
+  - 82: {fileID: 82000011012853270}
   m_Layer: 11
   m_Name: Bomb
   m_TagString: Untagged
@@ -59,6 +60,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!82 &82000011012853270
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011062309108}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7ebc566cd66984e458911a3df40589f0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114000012475639112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bomb: {fileID: 21300000, guid: ae2c576b53deb27469481f4e5f1cc77c, type: 3}
   bombwarn: {fileID: 21300000, guid: 300828d78c047f54680a0cc6510e87e8, type: 3}
+  explosion: {fileID: 1000013842807482, guid: 9e2cd9e778889ef41ba981644a644b1e, type: 2}
+  explosionClip: {fileID: 8300000, guid: 7ebc566cd66984e458911a3df40589f0, type: 3}
   potentialTargets: []
 --- !u!135 &135000011788049122
 SphereCollider:

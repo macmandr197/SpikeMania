@@ -1,31 +1,39 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy1 : MonoBehaviour
 {
     private Animator anim;
 
     [SerializeField] private float distanceToTarget = 2;
-    public GameObject EnemyBullet;
-    private int enemyDmg = 1;
-
-    public Transform gunBarrel;
-
     [SerializeField] public float movementSpeed;
 
     private bool moving = true;
 
+    private float healthTime = 2f;
+    private float healthTimeCount = 2f;
 
-    [SerializeField] private float myHealth = 5;
 
     private float shotTime = 1.5f;
 
+    public Transform gunBarrel;
     private float takeDmg;
     private float timer = 1.5f;
+    public GameObject EnemyBullet;
+    private int enemyDmg = 1;
+
+    [SerializeField] private float myHealth = 5f; //overridden in inspector
+   
+    private float maxhealth = 5f;
+
+    public Text pressureText;
+    public Image healthBar;
 
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        healthBar.enabled = false;
     }
 
 
@@ -33,7 +41,33 @@ public class Enemy1 : MonoBehaviour
     {
         //Debug.Log("Hit for: " + damage + " health.");
         myHealth -= damage;
+        
         //UpdateHealth();
+    }
+
+    void UpdateUI()
+    {
+        healthTimeCount -= Time.deltaTime;
+        healthBar.fillAmount = (myHealth / maxhealth);
+        if ( healthTimeCount >= 0)
+        {
+            if (myHealth / maxhealth > 0.5)
+            {
+                Color mycol = Color.Lerp(Color.red, Color.green, (myHealth / maxhealth));
+                healthBar.GetComponent<Image>().color = mycol;
+            }
+            else
+            {
+                Color mycol = Color.Lerp(Color.red, Color.yellow, (myHealth / maxhealth));
+                healthBar.GetComponent<Image>().color = mycol;
+            }
+        }
+        else
+        {
+            healthBar.enabled = false;
+        }
+        
+
     }
 
     private void Attack()
@@ -72,6 +106,8 @@ public class Enemy1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            healthBar.enabled = true;
+            healthTimeCount = healthTime;
             takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
             myHealth -= takeDmg;
             //Debug.Log("Enemy health is at:" + myHealth);
@@ -84,7 +120,7 @@ public class Enemy1 : MonoBehaviour
     {
         if (myHealth <= 0)
             Destroy(gameObject);
-
+        UpdateUI();
         DistanceCheck();
         Movement();
         {

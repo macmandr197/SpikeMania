@@ -70,12 +70,15 @@ public class PlayerController : MonoBehaviour
     private float lastShot;
     public float maxPressure = 100f;
     [SerializeField] private float myHealth = 25;
+    [SerializeField] private float playerBounds;
 
+    [Header("Dev' Tools")] [Space(10)]
+    [SerializeField] private bool GODMODE = false;
 
     public WeaponClass[] myWeapons = new WeaponClass[3];
         //Creates a new Array Class of Type WeaponClass to be filled in below.
 
-    [SerializeField] private float playerBounds;
+    
 
     [Header("UI Elements")] [Space(5)]
     public Image pressureBar;
@@ -91,9 +94,9 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(0.5f, 10f, 0f, 1, 0, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
-        myWeapons[1] = new WeaponClass(1.5f, 20f, 0f, 1, 1, bullet2, gunBarrel, shotDirection, shotPower, "medium");
-        myWeapons[2] = new WeaponClass(2f, 30f, 0f, 1, 2, bullet3, gunBarrel, shotDirection, shotPower, "heavy");
+        myWeapons[0] = new WeaponClass(0.5f, 5f, 0f, 1, 0, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
+        myWeapons[1] = new WeaponClass(1.5f, 10f, 0f, 1, 1, bullet2, gunBarrel, shotDirection, shotPower, "medium");
+        myWeapons[2] = new WeaponClass(2f, 15f, 0f, 1, 2, bullet3, gunBarrel, shotDirection, shotPower, "heavy");
             // creates a new instance of the Weapon class and fills in the specific index of the array class
         //This method will save quite a bit of nested if statements, and is quite elegant
         anim.SetFloat("Health", myHealth); // prevents player from instantly playing the death animation
@@ -113,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     public static float CalculateVertJump(float jumptarget)
     {
-        return Mathf.Sqrt(2f * jumptarget /** Physics.gravity.y*/); //simulates a parabola for the player to jump in. Instead of just up and down
+        return Mathf.Sqrt(2f * jumptarget * 9.8f); //simulates a parabola for the player to jump in. Instead of just up and down
     }
 
     private void SwitchWeapon()
@@ -138,33 +141,43 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
             if (Time.time > myWeapons[currentWeapon].fireRate + lastShot)
             {
-                if (currentPressure > myWeapons[currentWeapon].pressureCost)
+                if (GODMODE)
                 {
-                    currentPressure -= myWeapons[currentWeapon].pressureCost;
-                        //subtracting the bullet's pressure cost from the player's pressure
-                    pressureText.text = "Pressure:" + currentPressure; //updating the pressure text
-                    if (pressureBar.fillAmount <= 0.1f)
-                        pressureBar.fillAmount = 0.1f;
-                    else
-                        pressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost / maxPressure;
-                    myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod +
-                                                         myWeapons[currentWeapon].baseDmg;
+                    if (Time.time > myWeapons[currentWeapon].fireRate + lastShot)
+                    myWeapons[currentWeapon].bulletDmg = 100;
+                    myWeapons[currentWeapon].Shoot();
+                    lastShot = Time.time;
                 }
                 else
                 {
-                    Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
-                    myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].baseDmg;
-                    currentPressure = 10f;
+                    if (currentPressure > myWeapons[currentWeapon].pressureCost)
+                    {
+                        currentPressure -= myWeapons[currentWeapon].pressureCost;
+                        //subtracting the bullet's pressure cost from the player's pressure
+                        pressureText.text = "Pressure:" + currentPressure; //updating the pressure text
+                        if (pressureBar.fillAmount <= 0.1f)
+                            pressureBar.fillAmount = 0.1f;
+                        else
+                            pressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost / maxPressure;
+                        myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg;
+                    }
+                    else
+                    {
+                        //Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
+                        myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].baseDmg;
+                        currentPressure = 10f;
+                    }
+                    myWeapons[currentWeapon].Shoot();
+                    //after checking to see whether or not the player has enough pressure in the tank to fire, the bullet's damage will then be assigned accordingly. After which, this bullet will be fired.
+                    lastShot = Time.time;
                 }
-                myWeapons[currentWeapon].Shoot();
-                //after checking to see whether or not the player has enough pressure in the tank to fire, the bullet's damage will then be assigned accordingly. After which, this bullet will be fired.
-                lastShot = Time.time;
+                
             }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (collision.gameObject.tag == "EnemyBullet" && !GODMODE)
             if (myHealth > 0)
             {
                 takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
@@ -185,9 +198,12 @@ public class PlayerController : MonoBehaviour
     [UsedImplicitly]
     private void ApplyDamage(float damage)
     {
-        Debug.Log("Hit for: " + damage + " health.");
-        myHealth -= damage;
-        UpdateHealth();
+        if (!GODMODE)
+        {
+            //Debug.Log("Hit for: " + damage + " health.");
+            myHealth -= damage;
+            UpdateHealth();
+        }
     }
 
     private void UpdateHealth()
