@@ -26,6 +26,10 @@ public class Enemy1 : MonoBehaviour
     private float maxhealth = 5f;//maximum health enemy has. future implementations may include harder enemies
 
     public Image healthBar;
+    
+
+    private int goldVal = 5;
+
 
 
     private void Start()
@@ -110,16 +114,21 @@ public class Enemy1 : MonoBehaviour
             healthTimeCount = healthTime;
             takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg; //getting the amount of damage to take from the player's bullet
             myHealth -= takeDmg;
-            //Debug.Log("Enemy health is at:" + myHealth);
-            
+            Debug.Log("Hit for: " + takeDmg);
+
         }
     }
 
     // Update is called once per frame
     private void Update()
     {
+        
         if (myHealth <= 0)
+        {
+            GameObject.Find("GameController").GetComponent<GameController>().playerGold += goldVal;
             Destroy(gameObject);
+        }
+            
         UpdateUI();
         DistanceCheck();
         Movement();

@@ -15,7 +15,7 @@ public class WeaponClass
     public int baseDmg;
     public float bulletDmg;
     public int dmgMod;
-
+    public int IDDmgMod;
     public float fireRate;
 
     public Vector3 playerShotDir;
@@ -24,7 +24,7 @@ public class WeaponClass
     public string weaponName;
 
 
-    public WeaponClass(float RoF, float pCo, float dmg, int dBase, int dMod, GameObject bulletPrefab, Transform gBarrel,
+    public WeaponClass(float RoF, float pCo, float dmg, int dBase, int dMod, int IDMod, GameObject bulletPrefab, Transform gBarrel,
         Vector3 shotDir, float shotPow, string wName)
     {
         fireRate = RoF;
@@ -32,6 +32,7 @@ public class WeaponClass
         bulletDmg = dmg;
         baseDmg = dBase;
         dmgMod = dMod;
+        IDDmgMod = IDMod;
 
         bulletType = bulletPrefab;
         playerBarrel = gBarrel;
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
 {
     private readonly float maxHealth = 25;
     private Animator anim;
+
+
     [Space(5)] [Header("Weapon Attributes")] public GameObject bullet1;
     public GameObject bullet2;
     public GameObject bullet3;
@@ -67,6 +70,9 @@ public class PlayerController : MonoBehaviour
     public Transform gunBarrel;
     public bool isGrounded;
     [SerializeField] private float jumpheight;
+    public bool ID = false;
+
+
     [Header("Player Attributes")] [Space(5)]
     public float jumplimit;
     private float lastShot;
@@ -121,9 +127,9 @@ public class PlayerController : MonoBehaviour
        
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(0.5f, 5f, 0f, 1, 0, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
-        myWeapons[1] = new WeaponClass(1.5f, 10f, 0f, 1, 1, bullet2, gunBarrel, shotDirection, shotPower, "medium");
-        myWeapons[2] = new WeaponClass(2f, 15f, 0f, 1, 2, bullet3, gunBarrel, shotDirection, shotPower, "heavy");
+        myWeapons[0] = new WeaponClass(0.5f, 5f, 0f, 1, 0,2, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
+        myWeapons[1] = new WeaponClass(1.5f, 10f, 0f, 1, 1, 2, bullet2, gunBarrel, shotDirection, shotPower, "medium");
+        myWeapons[2] = new WeaponClass(2f, 15f, 0f, 1, 2, 2,bullet3, gunBarrel, shotDirection, shotPower, "heavy");
             // creates a new instance of the Weapon class and fills in the specific index of the array class
         //This method will save quite a bit of nested if statements, and is quite elegant
         anim.SetFloat("Health", myHealth); // prevents player from instantly playing the death animation
@@ -181,7 +187,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (GODMODE)
                 {
-                    if (Time.time > myWeapons[currentWeapon].fireRate + lastShot)
+                    if (Time.time > myWeapons[currentWeapon].fireRate + lastShot) //checking to see if the weapon can fire yet
                     myWeapons[currentWeapon].bulletDmg = 100;
                     myWeapons[currentWeapon].Shoot();
                     lastShot = Time.time;
@@ -190,14 +196,16 @@ public class PlayerController : MonoBehaviour
                 {
                     if (currentPressure > myWeapons[currentWeapon].pressureCost)
                     {
-                        currentPressure -= myWeapons[currentWeapon].pressureCost;
-                        //subtracting the bullet's pressure cost from the player's pressure
+                        currentPressure -= myWeapons[currentWeapon].pressureCost;//subtracting the bullet's pressure cost from the player's pressure
                         pressureText.text = "Pressure:" + currentPressure; //updating the pressure text
                         if (pressureBar.fillAmount <= 0.1f)
                             pressureBar.fillAmount = 0.1f;
                         else
                             pressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost / maxPressure;
-                        myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg;
+                        if (!ID)
+                            myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg; //setting the weapon's damage
+                        else
+                            myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg + myWeapons[currentWeapon].IDDmgMod;
                     }
                     else
                     {
