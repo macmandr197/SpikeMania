@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
     private float currentTankLvl = 1f;
     private float maxTankLvl = 5f;
+    private int TLGoldCost = 100;
 
 
     public GameObject[] enemies;
@@ -29,7 +30,7 @@ public class GameController : MonoBehaviour
 
     private int enemyIndex;
     private int diffRating = 100;
-
+    [Header("Player Properties")][Space(5)]
     public int playerGold = 0;
     public Text goldText;
 
@@ -146,7 +147,40 @@ public class GameController : MonoBehaviour
 
     public void IncreaseTankLevel()
     {
-        
+        if (playerGold >= TLGoldCost)
+        {
+            if (currentTankLvl<maxTankLvl)
+            {
+                Debug.Log("You have enough gold, upgrading tank");
+
+                IDpowerUpTimer = IDpowerUpTime;
+                playerGold -= TLGoldCost;
+                GameObject.Find("Character").GetComponent<PlayerController>().maxPressure += 100;
+                if ((GameObject.Find("Character").GetComponent<PlayerController>().currentPressure += 50f) <= GameObject.Find("Character").GetComponent<PlayerController>().maxPressure)
+                {
+                    GameObject.Find("Character").GetComponent<PlayerController>().currentPressure += 50f;
+                    
+                }
+                else
+                {
+                    GameObject.Find("Character").GetComponent<PlayerController>().currentPressure = //if player will go over pressure limit by upgrading tank, then set player's currenpressure to maxpressure
+                        GameObject.Find("Character").GetComponent<PlayerController>().maxPressure;
+                }
+                
+                currentTankLvl++;
+                GameObject.Find("TankLevelBar").GetComponent<Image>().fillAmount = currentTankLvl / maxTankLvl;
+                GameObject.Find("TankLevel").GetComponent<Text>().text = "Tank Level: " + currentTankLvl.ToString();
+            }
+            else
+            {
+                Debug.Log("You've reached the maximum tank level");
+            }
+            
+        }
+        else
+        {
+            Debug.Log("You don't have enough gold");
+        }
     }
 
     private void Update()

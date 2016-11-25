@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
                             pressureBar.fillAmount = 0.1f;
                         else
                             pressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost / maxPressure;
-                        if (!ID)
+                        if (!ID) //checking to see if the player is using the increase damage upgrade
                             myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg; //setting the weapon's damage
                         else
                             myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg + myWeapons[currentWeapon].IDDmgMod;
@@ -219,6 +219,12 @@ public class PlayerController : MonoBehaviour
                 }
                 
             }
+    }
+
+    void UpdateHUD()
+    {
+        pressureBar.fillAmount = (currentPressure / maxPressure);
+        pressureText.text = "Pressure: " + currentPressure + "/ " + maxPressure;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -294,6 +300,7 @@ public class PlayerController : MonoBehaviour
         SwitchWeapon();
         myWeapons[currentWeapon].playerShotDir = shotDirection;
         FireWeapon();
+        UpdateHUD();
         Movement();
         {
             var move = Input.GetAxis("Horizontal");
