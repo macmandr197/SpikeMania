@@ -186,6 +186,7 @@ MonoBehaviour:
   gunBarrel: {fileID: 4000010397908962}
   EnemyBullet: {fileID: 1000011323639598, guid: bc41473123792d543a93aaad84f7ea58,
     type: 2}
+  CBTPrefab: {fileID: 1000012827935326, guid: 42a0fff6f1b20af4eae2128469be6682, type: 2}
   myHealth: 5
   pressureText: {fileID: 0}
   healthBar: {fileID: 114000011169662556}

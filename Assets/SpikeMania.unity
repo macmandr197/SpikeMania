@@ -864,7 +864,7 @@ GameObject:
   - 222: {fileID: 1228937982}
   - 114: {fileID: 1228937981}
   m_Layer: 5
-  m_Name: Text
+  m_Name: WeaponText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

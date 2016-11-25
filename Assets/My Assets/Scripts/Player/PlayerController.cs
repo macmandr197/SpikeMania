@@ -11,6 +11,7 @@ public class WeaponClass
 
     private readonly Transform playerBarrel;
     private readonly float playerShotPow;
+
     public int baseDmg;
     public float bulletDmg;
     public int dmgMod;
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        
        
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
