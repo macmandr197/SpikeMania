@@ -5,28 +5,26 @@ public class Enemy1 : MonoBehaviour
 {
     private Animator anim;
 
-    [SerializeField] private float distanceToTarget = 2;
-    [SerializeField] public float movementSpeed;
+    [SerializeField] private float distanceToTarget = 2; //how far away the enemy has to be away from the player before it'll start shooting
+    [SerializeField] public float movementSpeed; //how fast the enemy will move
 
     private bool moving = true;
 
-    private float healthTime = 2f;
-    private float healthTimeCount = 2f;
+    private float healthTime = 2f; //the time (in seconds) that the healthbar is displayed for on the enemy
+    private float healthTimeCount = 2f;  
 
 
-    private float shotTime = 1.5f;
+    private float shotTime = 1.5f; //the value to reset to, after enemy has fired
+    private float timer = 1.5f; //the current time before the enemy can shoot again
 
     public Transform gunBarrel;
-    private float takeDmg;
-    private float timer = 1.5f;
-    public GameObject EnemyBullet;
-    private int enemyDmg = 1;
+    private float takeDmg; //how much damage the enemy will take from the player's bullet
+    public GameObject EnemyBullet; //the bullet prefab the enemy will fire
+    private int enemyDmg = 1; //the ammount of damage the enmy does
 
     [SerializeField] private float myHealth = 5f; //overridden in inspector
-   
-    private float maxhealth = 5f;
+    private float maxhealth = 5f;//maximum health enemy has. future implementations may include harder enemies
 
-    public Text pressureText;
     public Image healthBar;
 
 
@@ -53,12 +51,12 @@ public class Enemy1 : MonoBehaviour
         {
             if (myHealth / maxhealth > 0.5)
             {
-                Color mycol = Color.Lerp(Color.red, Color.green, (myHealth / maxhealth));
+                Color mycol = Color.Lerp(Color.red, Color.green, (myHealth / maxhealth)); //if the enemy's health is above 50%, the healthbar will transition from green to red
                 healthBar.GetComponent<Image>().color = mycol;
             }
             else
             {
-                Color mycol = Color.Lerp(Color.red, Color.yellow, (myHealth / maxhealth));
+                Color mycol = Color.Lerp(Color.red, Color.yellow, (myHealth / maxhealth)); //else, it'll transition from yellow to red
                 healthBar.GetComponent<Image>().color = mycol;
             }
         }
@@ -102,13 +100,15 @@ public class Enemy1 : MonoBehaviour
         }
     }
 
+   
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
             healthBar.enabled = true;
             healthTimeCount = healthTime;
-            takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
+            takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg; //getting the amount of damage to take from the player's bullet
             myHealth -= takeDmg;
             //Debug.Log("Enemy health is at:" + myHealth);
             
