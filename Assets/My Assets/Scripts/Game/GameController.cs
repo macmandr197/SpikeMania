@@ -4,19 +4,27 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [Header("Upgrade Attributes")][Space(5)]
+    [Header("Increase Damage")][Space(5)]
     public float IDpowerUpTime = 30f;
     public float IDpowerUpTimer = 30f;
     private int IDgoldCost = 50;
     private bool IDisActive = false;
 
-    public Sprite activeSprite;
-    public Sprite inactiveSprite;
 
+    [Header("Reduce Cooldown")] [Space(5)]
+    public float RCDTimer = 30f;
+    public float RCDTime = 30f;
+    private int RCDGoldCost = 30;
+    private bool RCDisActive = false;
+
+    [Header("Tank Upgrade")][Space(5)]
     private float currentTankLvl = 1f;
     private float maxTankLvl = 5f;
     private int TLGoldCost = 100;
+    
 
+    public Sprite activeSprite;
+    public Sprite inactiveSprite;
 
     public GameObject[] enemies;
     public GameObject enemy1;
@@ -41,7 +49,7 @@ public class GameController : MonoBehaviour
         GameObject.Find("IDTimeLeft").GetComponent<Text>().text = "Time Left: N/A";
         GameObject.Find("RSTTimeLeft").GetComponent<Text>().text = "Time Left: N/A";
         GameObject.Find("TankLevelBar").GetComponent<Image>().fillAmount = (currentTankLvl / maxTankLvl);
-        GameObject.Find("TankLevel").GetComponent<Text>().text = "Tank Level: " +  currentTankLvl.ToString();
+        GameObject.Find("TankLevel").GetComponent<Text>().text = "Tank Level: " +  currentTankLvl;
         enemies = new GameObject[3]; //the actual number of elements you want the array to conatin. The array will start a t index 0, and proceed to the defined limit
         enemies[0] = enemy1;
         enemies[1] = enemy2;
@@ -105,8 +113,8 @@ public class GameController : MonoBehaviour
             else
             {
                 //end powerup
-                Debug.Log("Ending powerup");
-                GameObject.Find("Character").GetComponent<PlayerController>().ID = true;
+               // Debug.Log("Ending powerup");
+                GameObject.Find("Character").GetComponent<PlayerController>().ID = false;
                 GameObject.Find("IDStatus").GetComponent<Image>().sprite = inactiveSprite;
                 GameObject.Find("IDTimeLeft").GetComponent<Text>().text = "Time Left: N/A";
                 IDisActive = false;
@@ -142,6 +150,7 @@ public class GameController : MonoBehaviour
         else
         {
             Debug.Log("You don't have enough gold");
+            
         }
     }
 
@@ -156,20 +165,15 @@ public class GameController : MonoBehaviour
                 IDpowerUpTimer = IDpowerUpTime;
                 playerGold -= TLGoldCost;
                 GameObject.Find("Character").GetComponent<PlayerController>().maxPressure += 100;
-                if ((GameObject.Find("Character").GetComponent<PlayerController>().currentPressure += 50f) <= GameObject.Find("Character").GetComponent<PlayerController>().maxPressure)
-                {
-                    GameObject.Find("Character").GetComponent<PlayerController>().currentPressure += 50f;
-                    
-                }
-                else
-                {
-                    GameObject.Find("Character").GetComponent<PlayerController>().currentPressure = //if player will go over pressure limit by upgrading tank, then set player's currenpressure to maxpressure
-                        GameObject.Find("Character").GetComponent<PlayerController>().maxPressure;
-                }
-                
+                    GameObject.Find("Character").GetComponent<PlayerController>().currentPressure +=
+                    GameObject.Find("Character").GetComponent<PlayerController>().currentPressure % GameObject.Find("Character").GetComponent<PlayerController>().maxPressure;
+
+
+
+
                 currentTankLvl++;
                 GameObject.Find("TankLevelBar").GetComponent<Image>().fillAmount = currentTankLvl / maxTankLvl;
-                GameObject.Find("TankLevel").GetComponent<Text>().text = "Tank Level: " + currentTankLvl.ToString();
+                GameObject.Find("TankLevel").GetComponent<Text>().text = "Tank Level: " + currentTankLvl;
             }
             else
             {
@@ -183,12 +187,61 @@ public class GameController : MonoBehaviour
         }
     }
 
+   
+
+    public void RCDCheck()
+    {
+        if (playerGold >= RCDGoldCost)
+        {
+            if (!RCDisActive)
+            {
+                
+                
+                    Debug.Log("Starting CoolDownUpgrade");
+                    RCDTimer = RCDTime;
+                    playerGold -= RCDGoldCost;
+                    RCDisActive = true;
+                    GameObject.Find("Character").GetComponent<PlayerController>().RCD = true;
+                    GameObject.Find("RSTStatus").GetComponent<Image>().sprite = activeSprite;
+                }
+                else
+                {
+                    Debug.Log("Continuing poweup");
+                    playerGold -= RCDGoldCost;
+                    RCDTimer += RCDTime;
+                }
+            }
+        
+    }
+
+    void ReduceCoolDown()
+    {
+        if (RCDisActive)
+        {
+            if (RCDTimer >= 0)
+            {
+                RCDTimer -= Time.deltaTime;
+                GameObject.Find("RSTTimeLeft").GetComponent<Text>().text = "Time Left: " + RCDTimer.ToString("F1");
+                //continue powerup
+            }
+            else
+            {
+                Debug.Log("Ending powerup");
+                GameObject.Find("Character").GetComponent<PlayerController>().RCD = false;
+                GameObject.Find("RSTStatus").GetComponent<Image>().sprite = inactiveSprite;
+                GameObject.Find("RSTTimeLeft").GetComponent<Text>().text = "Time Left: N/A";
+                RCDisActive = false;
+            }
+        }
+    }
+
     private void Update()
     {
-        goldText.text = "Gold: " + playerGold.ToString();
+        goldText.text = "Gold: " + playerGold;
         //We only want to spawn one at a time, so make sure we're not already making that call
         EnemySpawner();
         IncreaseDamageUpgrade();
+        ReduceCoolDown();
     }
 
 }

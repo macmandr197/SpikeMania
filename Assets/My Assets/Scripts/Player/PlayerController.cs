@@ -17,6 +17,7 @@ public class WeaponClass
     public int dmgMod;
     public int IDDmgMod;
     public float fireRate;
+    public float rateOfFireMod;
 
     public Vector3 playerShotDir;
 
@@ -24,10 +25,11 @@ public class WeaponClass
     public string weaponName;
 
 
-    public WeaponClass(float RoF, float pCo, float dmg, int dBase, int dMod, int IDMod, GameObject bulletPrefab, Transform gBarrel,
+    public WeaponClass(float RoF, float RoFMod, float pCo, float dmg, int dBase, int dMod, int IDMod, GameObject bulletPrefab, Transform gBarrel,
         Vector3 shotDir, float shotPow, string wName)
     {
         fireRate = RoF;
+        rateOfFireMod = RoFMod;
         pressureCost = pCo;
         bulletDmg = dmg;
         baseDmg = dBase;
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     [SerializeField] private float jumpheight;
     public bool ID = false;
-
+    public bool RCD = false;
 
     [Header("Player Attributes")] [Space(5)]
     public float jumplimit;
@@ -127,9 +129,9 @@ public class PlayerController : MonoBehaviour
        
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        myWeapons[0] = new WeaponClass(0.5f, 5f, 0f, 1, 0,2, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
-        myWeapons[1] = new WeaponClass(1.5f, 10f, 0f, 1, 1, 2, bullet2, gunBarrel, shotDirection, shotPower, "medium");
-        myWeapons[2] = new WeaponClass(2f, 15f, 0f, 1, 2, 2,bullet3, gunBarrel, shotDirection, shotPower, "heavy");
+        myWeapons[0] = new WeaponClass(0.5f,0.25f, 5f, 0f, 1, 0,2, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,RateofFirMod,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
+        myWeapons[1] = new WeaponClass(1.5f,1f, 10f, 0f, 1, 1, 2, bullet2, gunBarrel, shotDirection, shotPower, "medium");
+        myWeapons[2] = new WeaponClass(2f,1.5f, 15f, 0f, 1, 2, 2,bullet3, gunBarrel, shotDirection, shotPower, "heavy");
             // creates a new instance of the Weapon class and fills in the specific index of the array class
         //This method will save quite a bit of nested if statements, and is quite elegant
         anim.SetFloat("Health", myHealth); // prevents player from instantly playing the death animation
@@ -180,11 +182,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FireWeapon()
+    void FireCheck()
     {
         if (Input.GetKey(KeyCode.Space))
-            if (Time.time > myWeapons[currentWeapon].fireRate + lastShot)
+        {
+            if (!RCD)
             {
+                if (Time.time > myWeapons[currentWeapon].fireRate + lastShot)
+                    FireWeapon();
+            }
+            else
+            {
+                if (Time.time > (myWeapons[currentWeapon].fireRate - myWeapons[currentWeapon].rateOfFireMod) + lastShot)
+                    FireWeapon();
+            }
+            
+        }
+    }
+
+    private void FireWeapon()
+    {
+       
+            
                 if (GODMODE)
                 {
                     if (Time.time > myWeapons[currentWeapon].fireRate + lastShot) //checking to see if the weapon can fire yet
@@ -203,9 +222,14 @@ public class PlayerController : MonoBehaviour
                         else
                             pressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost / maxPressure;
                         if (!ID) //checking to see if the player is using the increase damage upgrade
-                            myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg; //setting the weapon's damage
+                            myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod +
+                                                                 myWeapons[currentWeapon].baseDmg;
+                                //setting the weapon's damage
                         else
+                        {
+                            Debug.Log("upgraded shot");
                             myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg + myWeapons[currentWeapon].IDDmgMod;
+                        }
                     }
                     else
                     {
@@ -218,7 +242,7 @@ public class PlayerController : MonoBehaviour
                     lastShot = Time.time;
                 }
                 
-            }
+            
     }
 
     void UpdateHUD()
@@ -299,7 +323,7 @@ public class PlayerController : MonoBehaviour
         PlayerLimits();
         SwitchWeapon();
         myWeapons[currentWeapon].playerShotDir = shotDirection;
-        FireWeapon();
+        FireCheck();
         UpdateHUD();
         Movement();
         {
