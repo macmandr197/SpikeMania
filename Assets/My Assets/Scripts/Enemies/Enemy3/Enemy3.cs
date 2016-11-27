@@ -22,6 +22,7 @@ public class Enemy3 : MonoBehaviour {
     private float shotTime = 1f; //the base time for each shot to reset to
     public GameObject EnemyBullet; //the bullet to instantiate
     private int enemyDmg = 2;
+    private float takeDmg; //how much damage the enemy will take from the player's bullet
     private GameObject Player;
     private float myHealth = 15f; //overridden by inspector
     private float maxhealth = 15f;
@@ -32,7 +33,7 @@ public class Enemy3 : MonoBehaviour {
     private float healthTime = 2f;
     private float healthTimeCount = 2f;
 
-
+    private int goldVal = 15;
 
 
     // Use this for initialization
@@ -91,6 +92,8 @@ public class Enemy3 : MonoBehaviour {
 
     void ApplyDamage(float damage) //used for bomb damage only
     {
+        healthBar.enabled = true;
+        healthTimeCount = healthTime;
         myHealth -= damage;
     }
 
@@ -100,8 +103,9 @@ public class Enemy3 : MonoBehaviour {
         {
             healthBar.enabled = true;
             healthTimeCount = healthTime;
-            myHealth -= collision.gameObject.GetComponent<BulletScript>().myDmg; //taking damage when hit by player bullet
-            //Debug.Log("Enemy health is at:" + myHealth);
+            takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg; //taking damage when hit by player bullet
+            myHealth -= takeDmg;
+            Debug.Log("Hit for: " + takeDmg);
 
         }
     }
@@ -146,8 +150,13 @@ public class Enemy3 : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-        if (myHealth <= 0)
+	    if (myHealth <= 0)
+	    {
+
+            GameObject.Find("GameController").GetComponent<GameController>().playerGold += goldVal;
+	        GameObject.Find("GameController").GetComponent<GameController>().bossPresent = false;
             Destroy(gameObject);
+	    }
 	    if (!Player)
 	    {
 	        Player = GameObject.Find("Character");
