@@ -6,5 +6,8 @@ public class EnemyBulletCollision : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Player")
             Destroy(gameObject);
-    }
+    
+     else if (collision.gameObject.tag == "Bounds")
+            Destroy(gameObject);
+}
 }

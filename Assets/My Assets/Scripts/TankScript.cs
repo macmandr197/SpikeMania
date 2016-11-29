@@ -9,12 +9,20 @@ public class TankScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerController>().currentPressure += pressureVal;
-            other.gameObject.GetComponent<PlayerController>().pressureText.text = "Pressure:" + other.gameObject.GetComponent<PlayerController>().currentPressure;
-            other.gameObject.GetComponent<PlayerController>().pressureBar.fillAmount +=other.gameObject.GetComponent<PlayerController>().myWeapons[other.gameObject.GetComponent<PlayerController>().currentWeapon].pressureCost /other.gameObject.GetComponent<PlayerController>().maxPressure;
-            Debug.Log(other.gameObject.GetComponent<PlayerController>().currentPressure);
-            Debug.Log("Pressure get!");
+            if ((other.gameObject.GetComponent<PlayerController>().currentPressure += pressureVal) <=
+                other.gameObject.GetComponent<PlayerController>().maxPressure)
+            {
+                other.gameObject.GetComponent<PlayerController>().currentPressure += pressureVal;
+            }
+            
             Destroy(gameObject);
         }
+        else if (other.gameObject.tag == "Bounds")
+            Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        transform.Translate(Vector2.left * 3.5f * Time.deltaTime);
     }
 }

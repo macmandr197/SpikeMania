@@ -35,13 +35,25 @@ public class GameController : MonoBehaviour
     public AudioClip explosionClip;
     private AudioSource audio;
 
+    [Header("Pickup Components")] [Space(5)]
+    public GameObject[] Pickups;
+    public GameObject airTank;
+
     [Header("Debug Tools")][Space(5)]
     [SerializeField] private bool stopSpawning = false; //debug bool to stop all enemies from spawning
     public bool bossPresent = false;
 
     private float maxTime = 8f;
     private float minTime = 4f;
+
+    private float maxPTime = 12f;
+    private float minPTime = 3f;
+
     private bool isSpawning = false;
+
+    private bool isPickupSpawning = false;
+
+    private int pickupIndex;
     private int enemyIndex;
     private int diffRating = 100;
 
@@ -60,11 +72,13 @@ public class GameController : MonoBehaviour
         GameObject.Find("RSTTimeLeft").GetComponent<Text>().text = "Time Left: N/A";
         GameObject.Find("TankLevelBar").GetComponent<Image>().fillAmount = (currentTankLvl / maxTankLvl);
         GameObject.Find("TankLevel").GetComponent<Text>().text = "Tank Level: " +  currentTankLvl;
-        enemies = new GameObject[3]; //the actual number of elements you want the array to conatin. The array will start a t index 0, and proceed to the defined limit
+        enemies = new GameObject[3]; //the actual number of elements you want the array to contain. The array will start at index 0, and proceed to the defined limit
         enemies[0] = enemy1;
         enemies[1] = enemy2;
         enemies[2] = enemy3;
         audio = GetComponent<AudioSource>();
+        Pickups = new GameObject[1];
+        Pickups[0] = airTank;
     }
 
     private IEnumerator SpawnObject(int index, float seconds)
@@ -76,13 +90,21 @@ public class GameController : MonoBehaviour
         isSpawning = false;
     }
 
+    private IEnumerator SpawnPickup(int idx,float scnd)
+    {
+        yield return new WaitForSeconds(scnd);
+        Instantiate(Pickups[idx], transform.position, transform.rotation);
+        //We've spawned, so now we could start another spawn     
+        isPickupSpawning = false;
+    }
+
     void EnemySpawner()
     {
         if (!isSpawning && !stopSpawning)
         {
             if (bossPresent)
             {
-                isSpawning = true;
+                //isSpawning = true;
                 //Debug.Log("Boss Battle!");
             }
             else
@@ -91,9 +113,15 @@ public class GameController : MonoBehaviour
                 isSpawning = true; //Yep, we're going to spawn
                 int spawnRating = Random.Range(0, diffRating);
                 if (spawnRating <= 30)
+                {
                     enemyIndex = 0; //trooper
-                else if (spawnRating >= 21 && spawnRating <= 44)
+                    bossPresent = false;
+                }
+                else if (spawnRating >= 31 && spawnRating <= 45)
+                {
                     enemyIndex = 1; //spaceship
+                    bossPresent = false;
+                }
                 else if (spawnRating >= 70)
                 {
                     enemyIndex = 2; //boss
@@ -106,6 +134,22 @@ public class GameController : MonoBehaviour
 
         }
     }
+
+    void PickupSpawner()
+    {
+        if (!isPickupSpawning )
+        {
+                //Debug.Log("ResumingSpawn!");
+                isPickupSpawning = true; //Yep, we're going to spawn
+                int pickupResult = Random.Range(0, diffRating);
+                if (pickupResult <= 30)
+                {
+                    pickupIndex = 0; //tank
+                }
+                StartCoroutine(SpawnPickup(pickupIndex, Random.Range(minPTime, maxPTime)));
+            }
+    }
+    
 
     void IncreaseDamageUpgrade()
     {
@@ -251,20 +295,21 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (isGameOver)
+        if (!isGameOver)
+        {
+            goldText.text = "Gold: " + playerGold;
+            //We only want to spawn one at a time, so make sure we're not already making that call
+            PickupSpawner();
+            EnemySpawner();
+            IncreaseDamageUpgrade();
+            ReduceCoolDown();
+        }
+        else
         {
             DestroyGameObjectsWithTag("Enemy");
             GameObject.Find("IDTimeLeft").GetComponent<Text>().text = "Time Left: N/A";
             GameObject.Find("RSTTimeLeft").GetComponent<Text>().text = "Time Left: N/A";
             GameObject.Find("ScoreVal").GetComponent<Text>().text = (playerGold * 10).ToString();
-        }
-        else
-        {
-            goldText.text = "Gold: " + playerGold;
-            //We only want to spawn one at a time, so make sure we're not already making that call
-            EnemySpawner();
-            IncreaseDamageUpgrade();
-            ReduceCoolDown();
         }
     }
 

@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - Bounds
   - ground
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - enemyBullets
   - enemybomb
   - Floor
-  - 
+  - Pickup
   - 
   - 
   - 

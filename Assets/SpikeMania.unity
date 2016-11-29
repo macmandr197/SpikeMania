@@ -1572,7 +1572,7 @@ GameObject:
   - 4: {fileID: 1184520488}
   m_Layer: 0
   m_Name: Bounds
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3344,6 +3344,8 @@ MonoBehaviour:
   enemy3: {fileID: 1000010630198850, guid: a4adfc24721958b458407ed58fd9e0ba, type: 2}
   Explosion: {fileID: 1000013842807482, guid: 9e2cd9e778889ef41ba981644a644b1e, type: 2}
   explosionClip: {fileID: 8300000, guid: 7ebc566cd66984e458911a3df40589f0, type: 3}
+  Pickups: []
+  airTank: {fileID: 1000011720833302, guid: 75a8b5e68189dc94fbe9d51efab5f565, type: 2}
   stopSpawning: 0
   bossPresent: 0
   playerGold: 900
