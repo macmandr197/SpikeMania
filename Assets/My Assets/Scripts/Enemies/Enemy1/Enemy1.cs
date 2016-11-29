@@ -114,7 +114,7 @@ public class Enemy1 : MonoBehaviour
             healthTimeCount = healthTime;
             takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg; //getting the amount of damage to take from the player's bullet
             myHealth -= takeDmg;
-            Debug.Log("Hit for: " + takeDmg);
+            //Debug.Log("Hit for: " + takeDmg);
 
         }
     }

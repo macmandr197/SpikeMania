@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 public class Enemy3 : MonoBehaviour {
 
-    [SerializeField] private float distanceToTarget = 2f;
+    //[SerializeField] private float distanceToTarget = 2f;
     private Animator anim;
     private Rigidbody rb;
     public bool isGrounded;
     [SerializeField]
     private float jumpheight;
 
-    [SerializeField]private float range = 1.5f;
+    //[SerializeField]private float range = 1.5f;
     private Vector3 offset;
     private Vector3 leader;
 
@@ -133,7 +132,7 @@ public class Enemy3 : MonoBehaviour {
         Vector3 targetposition = Player.transform.position + offset / 2; //controls how far back to stay from the player. The '/2' is halving the distance to player
 
         targetposition.y = transform.position.y;
-        if (transform.position.x > -3.2f && transform.position.x < 3.2f) //if the enemy is within the player's bounds, move towards player
+        if (transform.position.x > -4.4f && transform.position.x < 4.4f) //if the enemy is within the player's bounds, move towards player
         {
             transform.position += (targetposition - transform.position) * 0.05f;
         }

@@ -13,7 +13,7 @@ public class BombScript : MonoBehaviour
     private readonly float minTime = 3f;
     [SerializeField]private GameObject explosion;
     public AudioClip explosionClip;
-    private AudioSource audio;
+    public AudioSource audio;
 
     public List<Collider> potentialTargets = new List<Collider>();
     private float waitTime;

@@ -105,11 +105,6 @@ public class PlayerController : MonoBehaviour
     public Image WBG2;
 
 
-
-
-
-
-
     void Awake()
     {
         WBGImg = new List<Image>(3);
@@ -125,14 +120,15 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        
-       
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+
+        GameObject.Find("GameOverState").SetActive(false);
+
         myWeapons[0] = new WeaponClass(0.5f,0.25f, 5f, 0f, 1, 0,2, bullet1, gunBarrel, shotDirection, shotPower, "light"); //RateofFire,RateofFirMod,PressureCost,Damage,base damage, damage mod, prefab,GunBarrel,ShotDirection,ShotPower
         myWeapons[1] = new WeaponClass(1.5f,1f, 10f, 0f, 1, 1, 2, bullet2, gunBarrel, shotDirection, shotPower, "medium");
         myWeapons[2] = new WeaponClass(2f,1.5f, 15f, 0f, 1, 2, 2,bullet3, gunBarrel, shotDirection, shotPower, "heavy");
-            // creates a new instance of the Weapon class and fills in the specific index of the array class
+        // creates a new instance of the Weapon class and fills in the specific index of the array class
         //This method will save quite a bit of nested if statements, and is quite elegant
         anim.SetFloat("Health", myHealth); // prevents player from instantly playing the death animation
         pressureText.text = "Pressure:" + currentPressure;
@@ -165,7 +161,6 @@ public class PlayerController : MonoBehaviour
                 WBGImg[i].enabled = false;
             }
             WBGImg[currentWeapon].enabled = true;
-
         }
 
         else if (Input.GetKeyDown(KeyCode.Q))
@@ -196,14 +191,11 @@ public class PlayerController : MonoBehaviour
                 if (Time.time > (myWeapons[currentWeapon].fireRate - myWeapons[currentWeapon].rateOfFireMod) + lastShot)
                     FireWeapon();
             }
-            
         }
     }
 
     private void FireWeapon()
     {
-       
-            
                 if (GODMODE)
                 {
                     if (Time.time > myWeapons[currentWeapon].fireRate + lastShot) //checking to see if the weapon can fire yet
@@ -215,19 +207,13 @@ public class PlayerController : MonoBehaviour
                 {
                     if (currentPressure > myWeapons[currentWeapon].pressureCost)
                     {
-                        currentPressure -= myWeapons[currentWeapon].pressureCost;//subtracting the bullet's pressure cost from the player's pressure
-                        pressureText.text = "Pressure:" + currentPressure; //updating the pressure text
-                        if (pressureBar.fillAmount <= 0.1f)
-                            pressureBar.fillAmount = 0.1f;
-                        else
-                            pressureBar.fillAmount -= myWeapons[currentWeapon].pressureCost / maxPressure;
-                        if (!ID) //checking to see if the player is using the increase damage upgrade
-                            myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod +
-                                                                 myWeapons[currentWeapon].baseDmg;
-                                //setting the weapon's damage
+                        //if (pressureBar.fillAmount >= 0.1f)
+                            currentPressure -= myWeapons[currentWeapon].pressureCost;//subtracting the bullet's pressure cost from the player's pressure
+                if (!ID) //checking to see if the player is using the increase damage upgrade
+                            myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg;//setting the weapon's damage
                         else
                         {
-                            Debug.Log("upgraded shot");
+                            //Debug.Log("upgraded shot");
                             myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].dmgMod + myWeapons[currentWeapon].baseDmg + myWeapons[currentWeapon].IDDmgMod;
                         }
                     }
@@ -235,7 +221,7 @@ public class PlayerController : MonoBehaviour
                     {
                         //Debug.Log("Not enough pressure to fire at full power! Setting damage to 1");
                         myWeapons[currentWeapon].bulletDmg = myWeapons[currentWeapon].baseDmg;
-                        currentPressure = 10f;
+                        currentPressure = 5f;
                     }
                     myWeapons[currentWeapon].Shoot();
                     //after checking to see whether or not the player has enough pressure in the tank to fire, the bullet's damage will then be assigned accordingly. After which, this bullet will be fired.
@@ -249,26 +235,27 @@ public class PlayerController : MonoBehaviour
     {
         pressureBar.fillAmount = (currentPressure / maxPressure);
         pressureText.text = "Pressure: " + currentPressure + "/ " + maxPressure;
+
+        if (pressureBar.fillAmount <= 0.1f)
+        {
+            pressureBar.color = Color.red;
+        }
+        else
+        {
+            Color mycol = Color.Lerp(Color.yellow, Color.green, (currentPressure / maxPressure)); //if the enemy's health is above 50%, the healthbar will transition from green to red
+            pressureBar.GetComponent<Image>().color = mycol;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "EnemyBullet" && !GODMODE)
-            if (myHealth > 0)
-            {
-                takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;
-                    // getting the damage value from the bullet
-                myHealth -= takeDmg; //subtract damage from bullet
-                healthBar.fillAmount -= takeDmg / maxHealth; //update healthbar fill
-                UpdateHealth();
-
-                //Debug.Log("My health is at:" + myHealth);
-                if (myHealth <= 0)
-                {
-                    anim.SetFloat("Health", myHealth); // value to trigger the death animation
-                    Destroy(gameObject, 2f); //destroys player gameobject after 2 seconds
-                }
-            }
+        {
+            takeDmg = collision.gameObject.GetComponent<BulletScript>().myDmg;// getting the damage value from the bullet
+            myHealth -= takeDmg; //subtract damage from bullet
+            healthBar.fillAmount -= takeDmg / maxHealth; //update healthbar fill
+            UpdateHealth();     
+        }
     }
 
     [UsedImplicitly]
@@ -320,16 +307,28 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        PlayerLimits();
-        SwitchWeapon();
-        myWeapons[currentWeapon].playerShotDir = shotDirection;
-        FireCheck();
-        UpdateHUD();
-        Movement();
+        if (myHealth <= 0)
         {
-            var move = Input.GetAxis("Horizontal");
-            anim.SetFloat("Speed", move);
-            //Debug.Log(move);
+            anim.SetFloat("Health", myHealth); // value to trigger the death animation
+            GameObject.Find("GameOver").GetComponent<VisibilityChangeScript>().someBool = true;
+            GameObject.Find("GameController").GetComponent<GameController>().isGameOver = true;
+            Destroy(gameObject, 2f); //destroys player gameobject after 2 seconds
+            
         }
+        else
+        {
+            PlayerLimits();
+            SwitchWeapon();
+            myWeapons[currentWeapon].playerShotDir = shotDirection;
+            FireCheck();
+            UpdateHUD();
+            Movement();
+            {
+                var move = Input.GetAxis("Horizontal");
+                anim.SetFloat("Speed", move);
+                //Debug.Log(move);
+            }
+        }
+        
     }
 }
